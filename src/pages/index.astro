@@ -1,17 +1,58 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SocialLinks from "../components/SocialLinks.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Matías Baldanza — Developer Relations & Technical Content"
+  description="Hands-on DevRel engineer: working demos, docs and tutorials, workshops, and video — in English and Spanish."
+>
+  <section class="hero">
+    <img
+      class="avatar"
+      src="/images/avatar.jpg"
+      alt="Matías Baldanza"
+      width="112"
+      height="112"
+    />
+    <h1>Matías Baldanza</h1>
+    <p class="tagline">
+      Developer Relations · Technical Content · Developer Education
+    </p>
+    <p>
+      I research developer tools, build working demos, write the docs and
+      tutorials that explain them, and get in front of developers — on camera,
+      in live workshops, and in writing. In English and Spanish.
+    </p>
+    <SocialLinks />
+    <p class="meta contact">
+      <a href="mailto:matiasbaldanza@gmail.com">matiasbaldanza@gmail.com</a>
+      · Argentina (remote, US-hours compatible)
+    </p>
+  </section>
+
+  {/* Articles and published content cards will grow here over time. */}
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-top: var(--space-3);
+  }
+
+  .avatar {
+    margin-bottom: var(--space-3);
+  }
+
+  .tagline {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    color: var(--color-muted);
+    margin-top: 0.4rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .contact {
+    margin-top: var(--space-3);
+  }
+</style>
