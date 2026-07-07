@@ -1,0 +1,31 @@
+---
+const links = [
+  { label: "GitHub", href: "https://github.com/matiasbaldanza" },
+  { label: "X/Twitter", href: "https://x.com/matiasbaldanza" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/matiasbaldanza" },
+  { label: "Twitch", href: "https://twitch.tv/matiasbaldanza" },
+];
+---
+
+<nav class="social" aria-label="Social links">
+  {
+    links.map((link, i) => (
+      <>
+        <a href={link.href}>{link.label}</a>
+        {i < links.length - 1 && <span aria-hidden="true"> · </span>}
+      </>
+    ))
+  }
+</nav>
+
+<style>
+  .social {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+  }
+
+  .social span {
+    color: var(--color-muted);
+    margin-inline: 0.35em;
+  }
+</style>
