@@ -5,6 +5,7 @@ import BaseLayout from "./BaseLayout.astro";
 // src/pages/dotcms/ with this layout and add one entry here.
 const navItems = [
   { label: "Intro", href: "/dotcms" },
+  { label: "Samples", href: "/dotcms/samples" },
   { label: "Resumé", href: "/dotcms/resume" },
 ];
 
@@ -43,7 +44,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
-    gap: 0.5rem 1.25rem;
+    gap: 0.5rem 0.75rem;
     font-family: var(--font-sans);
     font-size: 0.8rem;
     font-weight: 600;

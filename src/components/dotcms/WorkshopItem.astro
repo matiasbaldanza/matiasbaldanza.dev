@@ -1,0 +1,83 @@
+---
+interface Props {
+  title: string;
+  date: string;
+  /** Short spec of what the workshop covered. */
+  description: string;
+}
+
+const { title, date, description } = Astro.props;
+---
+
+<details class="workshop">
+  <summary>
+    <span class="w-title">{title}</span>
+    <span class="w-date">{date}</span>
+  </summary>
+  <p class="w-body">{description}</p>
+</details>
+
+<style>
+  .workshop {
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .workshop summary {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .workshop summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Caret hint that the row expands */
+  .workshop summary::before {
+    content: "›";
+    flex: none;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    transition: transform 0.15s ease;
+  }
+
+  .workshop[open] summary::before {
+    transform: rotate(90deg);
+    color: var(--color-accent);
+  }
+
+  .workshop summary:hover .w-title {
+    color: var(--color-accent);
+  }
+
+  .w-title {
+    font-weight: 700;
+  }
+
+  .w-date {
+    margin-left: auto;
+    flex: none;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+
+  .w-body {
+    padding: 0 0 0.9rem 1.15rem;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .workshop summary {
+      flex-wrap: wrap;
+    }
+
+    .w-date {
+      margin-left: 1.15rem;
+      flex-basis: 100%;
+    }
+  }
+</style>

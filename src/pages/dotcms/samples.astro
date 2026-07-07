@@ -1,0 +1,261 @@
+---
+import DotcmsLayout from "../../layouts/DotcmsLayout.astro";
+import VideoEmbed from "../../components/dotcms/VideoEmbed.astro";
+import WorkshopItem from "../../components/dotcms/WorkshopItem.astro";
+
+// ---------------------------------------------------------------------------
+// Content lives here. Paste regular share URLs (YouTube watch/shorts,
+// youtu.be, TikTok video, Instagram reel) — VideoEmbed derives the embed URL.
+// `note` is optional everywhere: add it and a sticky-note annotation appears
+// over the video frame; omit it and nothing renders.
+// Sections only show up when their array has items.
+// ---------------------------------------------------------------------------
+
+type Video = { url: string; title: string; note?: string };
+
+// Long-form videos and tutorials (horizontal, 16:9)
+// Placeholders below — replace url/title/note with real content, keep the shape.
+const longForm: Video[] = [
+  {
+    url: "https://www.youtube.com/watch?v=dsTXcSeAZq8",
+    title: "DEMO — long-form tutorial",
+    note: "DEMO note: this is what an annotation looks like.",
+  },
+  {
+    url: "https://www.youtube.com/watch?v=XoTwXcqIqvs",
+    title: "DEMO — long-form without a note",
+  },
+];
+
+// Live workshop recordings (horizontal, 16:9)
+const workshopVideos: Video[] = [
+  {
+    url: "https://youtu.be/dsTXcSeAZq8",
+    title: "DEMO — workshop recording",
+    note: "DEMO: workshop notes go here.",
+  },
+];
+
+// Short-form vertical video (TikTok / Instagram / YouTube Shorts, 9:16)
+const shortForm: Video[] = [
+  {
+    url: "https://www.youtube.com/shorts/kRuTMWSyMLA",
+    title: "DEMO — vertical 1",
+    note: "DEMO vertical note",
+  },
+  {
+    url: "https://www.youtube.com/shorts/kRuTMWSyMLA",
+    title: "DEMO — vertical 2",
+  },
+  {
+    url: "https://www.youtube.com/shorts/kRuTMWSyMLA",
+    title: "DEMO — vertical 3",
+  },
+];
+
+// Workshop history — dates and short specs (from talleres.donweb.com)
+type Workshop = { title: string; date: string; description: string };
+
+const workshopHistory: Workshop[] = [
+  {
+    title: "DEMO — Docker desde cero",
+    date: "2024-08",
+    description:
+      "Two-hour live session: images, containers, volumes, and compose, ending with a deployed app. 300+ sign-ups.",
+  },
+  {
+    title: "DEMO — CI/CD con GitHub Actions",
+    date: "2024-10",
+    description:
+      "Pipelines from scratch: build, test, and deploy to a VPS on every push, with rollback strategies.",
+  },
+  {
+    title: "DEMO — Deploy de apps con Nginx y SSL",
+    date: "2025-02",
+    description:
+      "Reverse proxies, Let's Encrypt certificates, and zero-downtime reloads, live and unscripted.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Dev-only skeleton mode: flip to `&& true` to append the demo entries below
+// in `npm run dev` (e.g. to preview layout with more items than you have).
+// import.meta.env.DEV is false in `astro build`, so demo entries can never
+// reach production either way.
+// ---------------------------------------------------------------------------
+const showDemo = import.meta.env.DEV && false;
+
+const demo: {
+  longForm: Video[];
+  workshopVideos: Video[];
+  shortForm: Video[];
+  workshopHistory: Workshop[];
+} = {
+  longForm: [
+    {
+      url: "https://www.youtube.com/watch?v=dsTXcSeAZq8",
+      title: "DEMO — long-form tutorial",
+      note: "DEMO note: this is what an annotation looks like.",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=XoTwXcqIqvs",
+      title: "DEMO — long-form without a note",
+    },
+  ],
+  workshopVideos: [
+    {
+      url: "https://youtu.be/dsTXcSeAZq8",
+      title: "DEMO — workshop recording",
+      note: "DEMO: workshop notes go here.",
+    },
+  ],
+  shortForm: [
+    {
+      url: "https://www.youtube.com/shorts/kRuTMWSyMLA",
+      title: "DEMO — vertical 1",
+      note: "DEMO vertical note",
+    },
+    {
+      url: "https://www.youtube.com/shorts/kRuTMWSyMLA",
+      title: "DEMO — vertical 2",
+    },
+    {
+      url: "https://www.youtube.com/shorts/kRuTMWSyMLA",
+      title: "DEMO — vertical 3",
+    },
+  ],
+  workshopHistory: [
+    {
+      title: "DEMO — Docker desde cero",
+      date: "2024-08",
+      description:
+        "Two-hour live session: images, containers, volumes, and compose, ending with a deployed app. 300+ sign-ups.",
+    },
+    {
+      title: "DEMO — CI/CD con GitHub Actions",
+      date: "2024-10",
+      description:
+        "Pipelines from scratch: build, test, and deploy to a VPS on every push, with rollback strategies.",
+    },
+    {
+      title: "DEMO — Deploy de apps con Nginx y SSL",
+      date: "2025-02",
+      description:
+        "Reverse proxies, Let's Encrypt certificates, and zero-downtime reloads, live and unscripted.",
+    },
+  ],
+};
+
+const longFormAll = showDemo ? [...longForm, ...demo.longForm] : longForm;
+const workshopVideosAll = showDemo
+  ? [...workshopVideos, ...demo.workshopVideos]
+  : workshopVideos;
+const shortFormAll = showDemo ? [...shortForm, ...demo.shortForm] : shortForm;
+const workshopHistoryAll = showDemo
+  ? [...workshopHistory, ...demo.workshopHistory]
+  : workshopHistory;
+---
+
+<DotcmsLayout
+  title="Work samples — Matías Baldanza"
+  description="Video, workshops, and technical content samples by Matías Baldanza."
+>
+  <header class="top">
+    <h1>Work samples</h1>
+    <p class="meta">
+      A hand-picked selection — video, live workshops, and short-form content.
+    </p>
+  </header>
+
+  <p class="subtitle">
+    Uh, oh! I’m currently curating samples and will be uploading them in a few
+    hours — what’s below is a growing selection, not the finished gallery. Check
+    back soon! 🚧 Sorry for the inconvenience. 🚧
+  </p>
+
+  {
+    longFormAll.length > 0 && (
+      <>
+        <h2>Long-form video &amp; tutorials</h2>
+        {longFormAll.map((v) => (
+          <VideoEmbed url={v.url} title={v.title} note={v.note} />
+        ))}
+      </>
+    )
+  }
+
+  {
+    workshopVideosAll.length > 0 && (
+      <>
+        <h2>Live workshops</h2>
+        {workshopVideosAll.map((v) => (
+          <VideoEmbed url={v.url} title={v.title} note={v.note} />
+        ))}
+      </>
+    )
+  }
+
+  {
+    shortFormAll.length > 0 && (
+      <>
+        <h2>Short-form video</h2>
+        <div class="vertical-grid">
+          {shortFormAll.map((v) => (
+            <VideoEmbed
+              url={v.url}
+              title={v.title}
+              note={v.note}
+              orientation="vertical"
+            />
+          ))}
+        </div>
+      </>
+    )
+  }
+
+  {
+    workshopHistoryAll.length > 0 && (
+      <>
+        <h2>Workshop history</h2>
+        <p class="meta">Click any row for the session spec.</p>
+        <div class="workshop-list">
+          {workshopHistoryAll.map((w) => (
+            <WorkshopItem
+              title={w.title}
+              date={w.date}
+              description={w.description}
+            />
+          ))}
+        </div>
+      </>
+    )
+  }
+
+  <p slot="footer">
+    <a href="/dotcms">← Back to the pitch</a>{" · "}
+    <a href="/dotcms/resume">resumé</a>{" · "}
+    <a href="mailto:matiasbaldanza@gmail.com">matiasbaldanza@gmail.com</a>
+  </p>
+</DotcmsLayout>
+
+<style>
+  .top {
+    padding-top: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .top .meta {
+    margin-top: 0.4rem;
+  }
+
+  .vertical-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-3) var(--space-2);
+  }
+
+  .workshop-list {
+    border-top: 1px solid var(--color-rule);
+    margin-bottom: var(--space-3);
+  }
+</style>
