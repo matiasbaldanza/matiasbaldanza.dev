@@ -22,6 +22,5 @@ page is built, so propagation happens in parallel with development.
 
 ## Deferred past v1
 
-- Case study page under `/dotcms` (Zimdars-style project deep-dive)
-- Articles/content cards on the homepage (`@astrojs/mdx` + content collection)
-- OG image generation
+Moved to [roadmap.md](./roadmap.md), which also covers visitor
+analytics/notifications and the migration off Vercel.
