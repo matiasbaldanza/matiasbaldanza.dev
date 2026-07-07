@@ -8,9 +8,11 @@ interface Props {
   orientation?: "horizontal" | "vertical";
   /** Optional annotation rendered as a sticky note over the frame. */
   note?: string;
+  /** Marks recently added content with a NEW badge in the top-right corner. */
+  isNew?: boolean;
 }
 
-const { url, title, orientation = "horizontal", note } = Astro.props;
+const { url, title, orientation = "horizontal", note, isNew = false } = Astro.props;
 
 function toEmbedUrl(raw: string): string {
   const u = new URL(raw);
@@ -41,6 +43,7 @@ const src = toEmbedUrl(url);
 ---
 
 <figure class:list={["video", orientation]}>
+  {isNew && <span class="new-badge">New</span>}
   {note && <figcaption class="note">{note}</figcaption>}
   <iframe
     src={src}
@@ -71,6 +74,24 @@ const src = toEmbedUrl(url);
     border: 0;
     border-radius: 4px;
     background: #000;
+  }
+
+  .new-badge {
+    position: absolute;
+    z-index: 1;
+    top: -0.6rem;
+    right: 0.75rem;
+    transform: rotate(1.5deg);
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25em 0.6em;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(31, 28, 26, 0.18);
   }
 
   .note {

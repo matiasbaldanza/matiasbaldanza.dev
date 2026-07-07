@@ -11,7 +11,14 @@ import WorkshopItem from "../../components/dotcms/WorkshopItem.astro";
 // Sections only show up when their array has items.
 // ---------------------------------------------------------------------------
 
-type Video = { url: string; title: string; note?: string };
+// ---------------------------------------------------------------------------
+// MASTER SWITCH — set to true to render the content arrays below, false to
+// hide them all (sections disappear, only the header + note remain).
+// Keep false in deploys until the DEMO placeholders are replaced.
+// ---------------------------------------------------------------------------
+const showContent = false;
+
+type Video = { url: string; title: string; note?: string; isNew?: boolean };
 
 // Long-form videos and tutorials (horizontal, 16:9)
 // Placeholders below — replace url/title/note with real content, keep the shape.
@@ -20,6 +27,7 @@ const longForm: Video[] = [
     url: "https://www.youtube.com/watch?v=dsTXcSeAZq8",
     title: "DEMO — long-form tutorial",
     note: "DEMO note: this is what an annotation looks like.",
+    isNew: true,
   },
   {
     url: "https://www.youtube.com/watch?v=XoTwXcqIqvs",
@@ -54,7 +62,12 @@ const shortForm: Video[] = [
 ];
 
 // Workshop history — dates and short specs (from talleres.donweb.com)
-type Workshop = { title: string; date: string; description: string };
+type Workshop = {
+  title: string;
+  date: string;
+  description: string;
+  isNew?: boolean;
+};
 
 const workshopHistory: Workshop[] = [
   {
@@ -74,6 +87,7 @@ const workshopHistory: Workshop[] = [
     date: "2025-02",
     description:
       "Reverse proxies, Let's Encrypt certificates, and zero-downtime reloads, live and unscripted.",
+    isNew: true,
   },
 ];
 
@@ -146,14 +160,22 @@ const demo: {
   ],
 };
 
-const longFormAll = showDemo ? [...longForm, ...demo.longForm] : longForm;
-const workshopVideosAll = showDemo
-  ? [...workshopVideos, ...demo.workshopVideos]
-  : workshopVideos;
-const shortFormAll = showDemo ? [...shortForm, ...demo.shortForm] : shortForm;
-const workshopHistoryAll = showDemo
-  ? [...workshopHistory, ...demo.workshopHistory]
-  : workshopHistory;
+const longFormAll = [
+  ...(showContent ? longForm : []),
+  ...(showDemo ? demo.longForm : []),
+];
+const workshopVideosAll = [
+  ...(showContent ? workshopVideos : []),
+  ...(showDemo ? demo.workshopVideos : []),
+];
+const shortFormAll = [
+  ...(showContent ? shortForm : []),
+  ...(showDemo ? demo.shortForm : []),
+];
+const workshopHistoryAll = [
+  ...(showContent ? workshopHistory : []),
+  ...(showDemo ? demo.workshopHistory : []),
+];
 ---
 
 <DotcmsLayout
@@ -178,7 +200,7 @@ const workshopHistoryAll = showDemo
       <>
         <h2>Long-form video &amp; tutorials</h2>
         {longFormAll.map((v) => (
-          <VideoEmbed url={v.url} title={v.title} note={v.note} />
+          <VideoEmbed url={v.url} title={v.title} note={v.note} isNew={v.isNew} />
         ))}
       </>
     )
@@ -189,7 +211,7 @@ const workshopHistoryAll = showDemo
       <>
         <h2>Live workshops</h2>
         {workshopVideosAll.map((v) => (
-          <VideoEmbed url={v.url} title={v.title} note={v.note} />
+          <VideoEmbed url={v.url} title={v.title} note={v.note} isNew={v.isNew} />
         ))}
       </>
     )
@@ -205,6 +227,7 @@ const workshopHistoryAll = showDemo
               url={v.url}
               title={v.title}
               note={v.note}
+              isNew={v.isNew}
               orientation="vertical"
             />
           ))}
@@ -224,6 +247,7 @@ const workshopHistoryAll = showDemo
               title={w.title}
               date={w.date}
               description={w.description}
+              isNew={w.isNew}
             />
           ))}
         </div>

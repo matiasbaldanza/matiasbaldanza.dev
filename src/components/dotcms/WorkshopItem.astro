@@ -4,14 +4,17 @@ interface Props {
   date: string;
   /** Short spec of what the workshop covered. */
   description: string;
+  /** Marks recently added rows with a NEW badge. */
+  isNew?: boolean;
 }
 
-const { title, date, description } = Astro.props;
+const { title, date, description, isNew = false } = Astro.props;
 ---
 
 <details class="workshop">
   <summary>
     <span class="w-title">{title}</span>
+    {isNew && <span class="new-badge">New</span>}
     <span class="w-date">{date}</span>
   </summary>
   <p class="w-body">{description}</p>
@@ -55,6 +58,20 @@ const { title, date, description } = Astro.props;
 
   .w-title {
     font-weight: 700;
+  }
+
+  .new-badge {
+    flex: none;
+    align-self: center;
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2em 0.5em;
+    border-radius: 2px;
   }
 
   .w-date {
