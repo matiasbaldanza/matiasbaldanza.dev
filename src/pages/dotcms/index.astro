@@ -4,7 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="Hi dotCMS — I'm Matías Baldanza"
-  description="A personal application for the Developer Relations role at dotCMS."
+  description="A personal application for the Developer Relations Engineer role at dotCMS."
   noindex
 >
   <header class="hero">
@@ -17,61 +17,113 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     />
     <h1>Hi dotCMS — I'm Matías.</h1>
     <p class="meta">
-      An application for the Developer Relations role{" · "}
+      An application for the Developer Relations Engineer role{" · "}
       <a href="/dotcms/resume">resumé</a>{" · "}
-      <a href="mailto:matiasbaldanza@gmail.com">email me</a>
+      <a
+        href="mailto:matiasbaldanza@gmail.com?subject=CV%20DevRel%20Engineer%20dotCMS%202026%20from%20site"
+        >email me</a
+      >
     </p>
   </header>
 
-  <p>
-    Rather than just tell you I can build developer experiences, I thought I'd
-    start by building one: this mini-site is my application. It's a static
-    Astro site with no client-side JavaScript, and the{" "}
-    <a href="https://github.com/matiasbaldanza/matiasbaldanza.dev"
+  <p class="subtitle">
+    This mini-site is my application for the <strong
+      >Developer Relations Engineer</strong
+    > role at <strong>dotCMS</strong>: a static Astro site with no client-side
+    JavaScript, backed by a public repo that includes commit history, planning
+    notes, and architecture decisions.
+  </p>
+  <p class="subtitle">
+    The <a href="https://github.com/matiasbaldanza/matiasbaldanza.dev"
       >repo is public</a
-    > — commit history, planning docs, and architecture decisions included.
-    That's how I like to work: in the open, showing the process, not just the
-    result.
+    > — commit history, planning docs, and architecture decisions included. That's
+    how I like to work: in the open, showing the process, not just the result.
   </p>
 
   <h2>About me</h2>
   <p>
     I'm a hands-on DevRel engineer. I research features, issues, and tools; I
-    build working demos; I write the docs and tutorials that explain them; and
-    I get in front of developers — on camera, in live workshops, in short- and
+    build working demos; I write the docs and tutorials that explain them; and I
+    get in front of developers, on camera, in live workshops, in short- and
     long-form video, and in writing.
   </p>
   <p>
-    Behind that is two decades of technical background — development, sysadmin,
-    infrastructure, training — and more than ten years producing technical
-    content in native-level English and Spanish. I've run daily live-coding
-    streams to a hundred concurrent viewers, taught DevOps workshops with 300+
-    sign-ups, and sustained a cadence of three short videos a week plus a
-    long-form deep dive every month. And I test <em>everything</em> I ship in
-    content: every environment, every command, every config.
+    Behind that is two decades of <u>
+      technical background as a developer, sysadmin, infrastructure, and trainer
+    </u>, and more than ten years producing technical content in <u>
+      native-level English and Spanish
+    </u>.
   </p>
   <p>
-    I care about one metric above all: how fast a developer gets from{" "}
-    <em>"this looks interesting"</em> to{" "}
-    <em>"I grok it and I'm using it effectively."</em>
+    I've run daily live-coding streams to a hundred concurrent viewers, taught
+    DevOps and programming live workshops with 300+ sign-ups, and sustained a
+    cadence of three short videos a week plus a long-form deep dive every month. <u
+      >I love building community with technical and non-technical audiences.</u
+    >
+  </p>
+  <h2>How I work</h2>
+  <p>
+    I think in systems and like to build in the open. I document what I’m doing,
+    capture decisions as I go, and leave useful artifacts behind for future me
+    and my team.
+  </p>
+  <p>
+    The goal is simple: improve continuously, preserve context, and turn the
+    work itself into a shared second brain. Agentic workflows and LLMs help me
+    do that faster and more deliberately.
+  </p>
+  <p>
+    I test <strong><em>everything</em></strong> in every piece of content I ship or
+    supervise, including every environment, every command, every config.
+  </p>
+  <p>
+    I care about one metric above all: how fast a developer gets from <em
+      >"this looks interesting"</em
+    > to <em>"I grok it and I'm using it effectively."</em>
+  </p>
+  <p>
+    I enjoy doing deep dives into codebases, but I also like looking for signals
+    in less obvious places: support tickets, recurring questions, internal Slack
+    threads, sales calls, and conversations with the engineering team. Some of
+    the most useful content doesn’t come from a keyword list or a roadmap item.
+    It comes from <u
+      >noticing where users are confused, where developers keep explaining the
+      same thing, or where the product has capabilities that people don’t yet
+      know how to use</u
+    >.
   </p>
 
   <h2>About you</h2>
   <p>
-    dotCMS sits in a spot I find genuinely interesting: a universal CMS that
-    doesn't force the choice between traditional and headless. Developers meet
-    you through REST and GraphQL APIs, SDKs, and integration guides — which
-    means your developer experience <em>is</em> your product's first
-    impression. A platform like that lives or dies by how quickly a developer
-    gets a working "hello world" against a real content repository.
+    <strong><em>dotCMS</em></strong> sits in an interesting space for me. For many
+    developers, the first real interaction with a platform like this is through the
+    API, SDKs, documentation, and starter examples — <u
+      >so the developer experience matters a lot</u
+    >.
   </p>
   <p>
-    That's exactly the kind of surface I've spent years working on: I've built
-    and documented integrations across the CMS landscape — Contentful, Sanity,
-    Strapi, Directus, Payload, Ghost, WordPress — and I know where developers
-    stumble when they evaluate a content platform, because I've been the
-    developer doing the evaluating, and the person writing the guide that gets
-    them unstuck.
+    A good developer experience has to serve different levels of intent.
+    Newcomers need a clear path from <em>“I’m curious”</em> to <em
+      >“I have content rendering from a real repository”</em
+    > without having to understand the whole platform first. Senior developers need
+    something different: accurate mental models, predictable APIs, sharp reference
+    docs, and enough depth to evaluate tradeoffs, extend the system, and trust it
+    in production.
+  </p>
+  <p>
+    That’s the kind of surface I’ve spent a lot of time working around. I’ve
+    built, tested, and documented integrations across different CMSs — including
+    Contentful, Sanity, Strapi, Directus, Payload, Ghost, and WordPress — and
+    the pattern is usually the same: the hard part is rarely just calling an
+    API. It’s understanding the content model, the rendering path, the auth
+    flow, the edge cases, and what the developer needs to know right now versus
+    what can wait.
+  </p>
+  <p>
+    I’ve been on both sides of that moment: the developer trying to make the
+    pieces fit, and the person writing the guide, example, or explanation that
+    helps the next developer build a clearer mental model and move a little
+    faster.
   </p>
 
   <h2>I'm that guy</h2>
@@ -83,24 +135,23 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   </p>
   <ul>
     <li>
-      <strong>Demos and docs that actually run.</strong> I built and tested
-      every environment, command, and config that shipped, and reviewed
-      production images and scripts for correctness and reproducibility.
+      <strong>Demos and docs that actually run.</strong> I built and tested every
+      environment, command, and config that shipped, and reviewed production images
+      and scripts for correctness and reproducibility.
     </li>
     <li>
-      <strong>Comfortable in front of developers.</strong> Live programming
-      workshops twice a month (300+ sign-ups, 150+ live), two years of daily
-      unscripted live-coding on Twitch, and a steady video cadence in
-      collaboration with an editor.
+      <strong>Comfortable in front of developers.</strong> Live programming workshops
+      twice a month (300+ sign-ups, 150+ live), two years of daily unscripted live-coding
+      on Twitch, and a steady video cadence in collaboration with an editor.
     </li>
     <li>
-      <strong>Bilingual by default.</strong> Native-level technical English and
-      Spanish — content, workshops, and community, both directions.
+      <strong>Bilingual by default.</strong> Native-level technical English and Spanish
+      — content, workshops, and community, both directions.
     </li>
     <li>
-      <strong>Current on AI developer workflows.</strong> Claude Code, MCP
-      servers, RAG pipelines, evals, agent-friendly documentation — the way
-      developers will meet dotCMS next.
+      <strong>Current on AI developer workflows.</strong> Claude Code, MCP servers,
+      RAG pipelines, evals, agent-friendly documentation — the way developers will
+      meet dotCMS next.
     </li>
   </ul>
   <p>
@@ -111,7 +162,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
   <p slot="footer">
     Matías Baldanza{" · "}
-    <a href="mailto:matiasbaldanza@gmail.com">matiasbaldanza@gmail.com</a>{" · "}
+    <a href="mailto:matiasbaldanza@gmail.com">matiasbaldanza@gmail.com</a>{
+      " · "
+    }
     <a href="/dotcms/resume">resumé</a>{" · "}
     <a href="https://github.com/matiasbaldanza">GitHub</a>{" · "}
     <a href="https://linkedin.com/in/matiasbaldanza">LinkedIn</a>

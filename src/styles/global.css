@@ -35,8 +35,8 @@ body {
   background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-serif);
-  font-size: 1.125rem;
-  line-height: 1.65;
+  font-size: 1.25rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -70,6 +70,21 @@ h3 {
   font-size: 1.125rem;
   margin-top: var(--space-3);
   margin-bottom: var(--space-1);
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-ink);
+  margin-bottom: var(--space-2);
+}
+
+u {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
 }
 
 p,
