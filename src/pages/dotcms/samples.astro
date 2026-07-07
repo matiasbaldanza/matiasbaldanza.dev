@@ -191,8 +191,8 @@ const workshopHistoryAll = [
 
   <p class="subtitle">
     Uh, oh! I’m currently curating samples and will be uploading them in a few
-    hours — what’s below is a growing selection, not the finished gallery. Check
-    back soon! 🚧 Sorry for the inconvenience. 🚧
+    hours. Below I'll be adding a growing selection, not the finished gallery.
+    🚧 Check back soon and, sorry for the inconvenience! 🚧
   </p>
 
   {
@@ -200,7 +200,12 @@ const workshopHistoryAll = [
       <>
         <h2>Long-form video &amp; tutorials</h2>
         {longFormAll.map((v) => (
-          <VideoEmbed url={v.url} title={v.title} note={v.note} isNew={v.isNew} />
+          <VideoEmbed
+            url={v.url}
+            title={v.title}
+            note={v.note}
+            isNew={v.isNew}
+          />
         ))}
       </>
     )
@@ -211,7 +216,12 @@ const workshopHistoryAll = [
       <>
         <h2>Live workshops</h2>
         {workshopVideosAll.map((v) => (
-          <VideoEmbed url={v.url} title={v.title} note={v.note} isNew={v.isNew} />
+          <VideoEmbed
+            url={v.url}
+            title={v.title}
+            note={v.note}
+            isNew={v.isNew}
+          />
         ))}
       </>
     )
