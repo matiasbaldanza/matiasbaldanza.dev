@@ -55,6 +55,13 @@ h3 {
   text-wrap: balance;
 }
 
+h1,
+h2,
+h3,
+.subtitle {
+  text-wrap: balance;
+}
+
 h1 {
   font-size: 2.25rem;
   letter-spacing: -0.015em;
@@ -73,7 +80,7 @@ h3 {
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 400;
   font-style: italic;
   line-height: 1.5;
@@ -81,16 +88,24 @@ h3 {
   margin-bottom: var(--space-2);
 }
 
+/* Highlighter emphasis — links own the underline, so <u> gets a subtle
+   accent-tinted wash over the lower half of the line instead. */
 u {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.15em;
+  text-decoration: none;
+  background-image: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-accent) 16%, transparent) 42%,
+    transparent 42%
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 p,
 ul,
 ol {
   margin-bottom: var(--space-2);
+  text-wrap: balance;
 }
 
 ul,
