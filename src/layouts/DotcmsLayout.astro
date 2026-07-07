@@ -1,0 +1,73 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+// The /dotcms mini-site nav. To add a page: create it under
+// src/pages/dotcms/ with this layout and add one entry here.
+const navItems = [
+  { label: "Intro", href: "/dotcms" },
+  { label: "Resumé", href: "/dotcms/resume" },
+];
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<BaseLayout title={title} description={description} noindex>
+  <nav class="mini-nav" aria-label="Mini-site pages">
+    {
+      navItems.map((item) => {
+        const isCurrent = currentPath === item.href;
+        return (
+          <a
+            href={item.href}
+            class:list={{ current: isCurrent }}
+            aria-current={isCurrent ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        );
+      })
+    }
+  </nav>
+  <slot />
+  <slot name="footer" slot="footer" />
+</BaseLayout>
+
+<style>
+  .mini-nav {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mini-nav a {
+    color: var(--color-muted);
+    text-decoration: none;
+    padding: 0.2em 0.55em;
+  }
+
+  .mini-nav a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .mini-nav a.current {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    text-decoration: none;
+    border-radius: 2px;
+  }
+</style>
