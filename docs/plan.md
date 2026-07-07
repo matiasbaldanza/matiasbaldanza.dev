@@ -13,11 +13,11 @@ page is built, so propagation happens in parallel with development.
 - [x] docs/: brief, plan, ADR 0001 (stack), ADR 0002 (unlisted /dotcms)
 - [ ] Public GitHub repo, first push
 - [ ] Vercel project + `matiasbaldanza.dev` domain + DNS records at registrar
-- [ ] Base layout (meta/OG, `noindex` prop) + `global.css` + SocialLinks
-- [ ] Homepage: photo, name, tagline, socials, email
-- [ ] `/dotcms` pitch page (copy drafted from CV, edited by Matías)
-- [ ] `/dotcms/resume` from Typst source + PDF in `public/cv/`
-- [ ] Polish: OG tags, favicon, responsive pass, README rewrite
+- [x] Base layout (meta/OG, `noindex` prop) + `global.css` + SocialLinks
+- [x] Homepage: photo, name, tagline, socials, email
+- [x] `/dotcms` pitch page (copy drafted from CV, edited by Matías)
+- [x] `/dotcms/resume` from Typst source + PDF in `public/cv/`
+- [x] Polish: OG tags, favicon, responsive pass, README rewrite
 - [ ] Verify production: both URLs live, noindex only on `/dotcms/*`
 
 ## Deferred past v1
