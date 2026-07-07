@@ -181,6 +181,7 @@ footer.site {
   max-width: var(--measure);
   margin-inline: auto;
   padding: 0 var(--space-3) var(--space-4);
+  text-align: center;
 }
 
 footer.site .inner {
