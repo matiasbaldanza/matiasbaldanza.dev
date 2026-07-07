@@ -31,6 +31,17 @@ html {
   color-scheme: light;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+h2[id],
+h3[id] {
+  scroll-margin-top: var(--space-3);
+}
+
 body {
   background: var(--color-bg);
   color: var(--color-ink);

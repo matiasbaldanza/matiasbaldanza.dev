@@ -16,7 +16,7 @@ import WorkshopItem from "../../components/dotcms/WorkshopItem.astro";
 // hide them all (sections disappear, only the header + note remain).
 // Keep false in deploys until the DEMO placeholders are replaced.
 // ---------------------------------------------------------------------------
-const showContent = false;
+const showContent = true;
 
 type Video = { url: string; title: string; note?: string; isNew?: boolean };
 
@@ -61,7 +61,7 @@ const shortForm: Video[] = [
   },
 ];
 
-// Workshop history — dates and short specs (from talleres.donweb.com)
+// Workshop history — dates and short specs
 type Workshop = {
   title: string;
   date: string;
@@ -176,6 +176,14 @@ const workshopHistoryAll = [
   ...(showContent ? workshopHistory : []),
   ...(showDemo ? demo.workshopHistory : []),
 ];
+
+// "On this page" anchor row — only sections that actually render.
+const sections = [
+  { id: "long-form", label: "Long-form", count: longFormAll.length },
+  { id: "live-workshops", label: "Live workshops", count: workshopVideosAll.length },
+  { id: "short-form", label: "Short-form", count: shortFormAll.length },
+  { id: "workshop-history", label: "Workshop history", count: workshopHistoryAll.length },
+].filter((s) => s.count > 0);
 ---
 
 <DotcmsLayout
@@ -196,9 +204,23 @@ const workshopHistoryAll = [
   </p>
 
   {
+    sections.length > 1 && (
+      <nav class="toc" aria-label="On this page">
+        <span class="toc-label">On this page:</span>
+        {sections.map((s, i) => (
+          <>
+            <a href={`#${s.id}`}>{s.label}</a>
+            {i < sections.length - 1 && <span aria-hidden="true"> · </span>}
+          </>
+        ))}
+      </nav>
+    )
+  }
+
+  {
     longFormAll.length > 0 && (
       <>
-        <h2>Long-form video &amp; tutorials</h2>
+        <h2 id="long-form">Long-form video &amp; tutorials</h2>
         {longFormAll.map((v) => (
           <VideoEmbed
             url={v.url}
@@ -214,7 +236,7 @@ const workshopHistoryAll = [
   {
     workshopVideosAll.length > 0 && (
       <>
-        <h2>Live workshops</h2>
+        <h2 id="live-workshops">Live workshops</h2>
         {workshopVideosAll.map((v) => (
           <VideoEmbed
             url={v.url}
@@ -230,7 +252,7 @@ const workshopHistoryAll = [
   {
     shortFormAll.length > 0 && (
       <>
-        <h2>Short-form video</h2>
+        <h2 id="short-form">Short-form video</h2>
         <div class="vertical-grid">
           {shortFormAll.map((v) => (
             <VideoEmbed
@@ -249,7 +271,7 @@ const workshopHistoryAll = [
   {
     workshopHistoryAll.length > 0 && (
       <>
-        <h2>Workshop history</h2>
+        <h2 id="workshop-history">Workshop history</h2>
         <p class="meta">Click any row for the session spec.</p>
         <div class="workshop-list">
           {workshopHistoryAll.map((w) => (
@@ -266,7 +288,7 @@ const workshopHistoryAll = [
   }
 
   <p slot="footer">
-    <a href="/dotcms">← Back to the pitch</a>{" · "}
+    <a href="/dotcms">← Back to the intro</a>{" · "}
     <a href="/dotcms/resume">resumé</a>{" · "}
     <a href="mailto:matiasbaldanza@gmail.com">matiasbaldanza@gmail.com</a>
   </p>
@@ -280,6 +302,39 @@ const workshopHistoryAll = [
 
   .top .meta {
     margin-top: 0.4rem;
+  }
+
+  .toc {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-bottom: var(--space-3);
+    background: #fff;
+    border: 1px solid var(--color-rule);
+    border-radius: 2px;
+    padding: 0.55rem 0.75rem;
+    text-align: center;
+  }
+
+  .toc-label {
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    margin-right: 0.4em;
+  }
+
+  .toc a {
+    color: var(--color-muted);
+    text-decoration-color: var(--color-rule);
+  }
+
+  .toc a:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+
+  .toc span {
+    margin-inline: 0.3em;
   }
 
   .vertical-grid {
