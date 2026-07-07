@@ -1,0 +1,134 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Hi dotCMS — I'm Matías Baldanza"
+  description="A personal application for the Developer Relations role at dotCMS."
+  noindex
+>
+  <header class="hero">
+    <img
+      class="avatar"
+      src="/images/avatar.jpg"
+      alt="Matías Baldanza"
+      width="112"
+      height="112"
+    />
+    <h1>Hi dotCMS — I'm Matías.</h1>
+    <p class="meta">
+      An application for the Developer Relations role ·
+      <a href="/dotcms/resume">resumé</a> ·
+      <a href="mailto:matiasbaldanza@gmail.com">email me</a>
+    </p>
+  </header>
+
+  <p>
+    Rather than just tell you I can build developer experiences, I thought I'd
+    start by building one: this mini-site is my application. It's a static
+    Astro site with no client-side JavaScript, and the
+    <a href="https://github.com/matiasbaldanza/matiasbaldanza.dev"
+      >repo is public</a
+    > — commit history, planning docs, and architecture decisions included.
+    That's how I like to work: in the open, showing the process, not just the
+    result.
+  </p>
+
+  <h2>About me</h2>
+  <p>
+    I'm a hands-on DevRel engineer. I research features, issues, and tools; I
+    build working demos; I write the docs and tutorials that explain them; and
+    I get in front of developers — on camera, in live workshops, in short- and
+    long-form video, and in writing.
+  </p>
+  <p>
+    Behind that is two decades of technical background — development, sysadmin,
+    infrastructure, training — and more than ten years producing technical
+    content in native-level English and Spanish. I've run daily live-coding
+    streams to a hundred concurrent viewers, taught DevOps workshops with 300+
+    sign-ups, and sustained a cadence of three short videos a week plus a
+    long-form deep dive every month. And I test <em>everything</em> I ship in
+    content: every environment, every command, every config.
+  </p>
+  <p>
+    I care about one metric above all: how fast a developer gets from
+    <em>"this looks interesting"</em> to
+    <em>"I grok it and I'm using it effectively."</em>
+  </p>
+
+  <h2>About you</h2>
+  <p>
+    dotCMS sits in a spot I find genuinely interesting: a universal CMS that
+    doesn't force the choice between traditional and headless. Developers meet
+    you through REST and GraphQL APIs, SDKs, and integration guides — which
+    means your developer experience <em>is</em> your product's first
+    impression. A platform like that lives or dies by how quickly a developer
+    gets a working "hello world" against a real content repository.
+  </p>
+  <p>
+    That's exactly the kind of surface I've spent years working on: I've built
+    and documented integrations across the CMS landscape — Contentful, Sanity,
+    Strapi, Directus, Payload, Ghost, WordPress — and I know where developers
+    stumble when they evaluate a content platform, because I've been the
+    developer doing the evaluating, and the person writing the guide that gets
+    them unstuck.
+  </p>
+
+  <h2>I'm that guy</h2>
+  <p>
+    You need someone who can own developer-facing content end to end. At DonWeb
+    Cloud I created the developer content program from scratch — tutorials,
+    guides, video, and demos across VPS, Linux, Docker, CI/CD, DNS/SSL, and CMS
+    platforms — reporting directly to product and marketing leadership.
+  </p>
+  <ul>
+    <li>
+      <strong>Demos and docs that actually run.</strong> I built and tested
+      every environment, command, and config that shipped, and reviewed
+      production images and scripts for correctness and reproducibility.
+    </li>
+    <li>
+      <strong>Comfortable in front of developers.</strong> Live programming
+      workshops twice a month (300+ sign-ups, 150+ live), two years of daily
+      unscripted live-coding on Twitch, and a steady video cadence in
+      collaboration with an editor.
+    </li>
+    <li>
+      <strong>Bilingual by default.</strong> Native-level technical English and
+      Spanish — content, workshops, and community, both directions.
+    </li>
+    <li>
+      <strong>Current on AI developer workflows.</strong> Claude Code, MCP
+      servers, RAG pipelines, evals, agent-friendly documentation — the way
+      developers will meet dotCMS next.
+    </li>
+  </ul>
+  <p>
+    I'd love to show you what that looks like applied to dotCMS. Have a look at
+    my <a href="/dotcms/resume">resumé</a>, or just hit reply on the email that
+    brought you here.
+  </p>
+
+  <p slot="footer">
+    Matías Baldanza ·
+    <a href="mailto:matiasbaldanza@gmail.com">matiasbaldanza@gmail.com</a> ·
+    <a href="/dotcms/resume">resumé</a> ·
+    <a href="https://github.com/matiasbaldanza">GitHub</a> ·
+    <a href="https://linkedin.com/in/matiasbaldanza">LinkedIn</a>
+  </p>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-top: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .avatar {
+    margin-bottom: var(--space-3);
+  }
+
+  .hero .meta {
+    margin-top: 0.4rem;
+  }
+</style>

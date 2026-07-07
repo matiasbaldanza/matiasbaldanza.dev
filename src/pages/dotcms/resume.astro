@@ -1,0 +1,209 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const skills = [
+  {
+    title: "Frontend & APIs",
+    items:
+      "JavaScript, TypeScript, React, Next.js, Astro; REST & GraphQL API integration, auth flows, SDK-based development",
+  },
+  {
+    title: "CMS & Content Platforms",
+    items: "Contentful, Sanity, Strapi, Directus, Payload, Ghost, WordPress",
+  },
+  {
+    title: "Infra & tooling",
+    items:
+      "Linux, Docker/Compose, Nginx, Caddy, GitHub Actions, PostgreSQL, VPS/cloud deployment",
+  },
+  {
+    title: "AI developer workflows",
+    items:
+      "Claude Code, Codex, MCP servers, RAG pipelines, evals, local models, agent-friendly documentation",
+  },
+  {
+    title: "Content & community",
+    items:
+      "technical writing, documentation, screencasts, livestreaming (OBS), video editing (Final Cut Pro/Premiere), workshops, developer forums; bilingual EN (C2) / ES (native)",
+  },
+  {
+    title: "Backend",
+    items: "Node, Express, Hono, FastAPI, Python, PostgreSQL",
+  },
+];
+---
+
+<BaseLayout
+  title="Resumé — Matías Baldanza"
+  description="Resumé of Matías Baldanza: Developer Relations Engineer, Technical Content, Developer Education."
+  noindex
+>
+  <header class="top">
+    <h1>Matías Baldanza</h1>
+    <p class="tagline">
+      Developer Relations Engineer · Technical Content · Developer Education<br />
+      Argentina (remote, US-hours compatible)
+    </p>
+    <p class="meta">
+      <a href="mailto:matiasbaldanza@gmail.com">matiasbaldanza@gmail.com</a> ·
+      <a href="https://linkedin.com/in/matiasbaldanza">LinkedIn</a> ·
+      <a href="https://github.com/matiasbaldanza">GitHub</a> ·
+      <a href="https://x.com/matiasbaldanza">X/Twitter</a> ·
+      <a href="/cv/matias-baldanza-cv-dotcms.pdf">Download PDF</a>
+    </p>
+  </header>
+
+  <h2>About me</h2>
+  <p>
+    Hands-on DevRel engineer: I research features, issues, and tools, I build
+    working demos, write the docs and tutorials that explain them, and get in
+    front of developers: on camera, in live workshops, in short- and long-form
+    video, and in writing. Two decades of technical background (development,
+    sysadmin, infrastructure, training) plus 10+ years producing technical
+    content in native-level English and Spanish. I care about one metric above
+    all: how fast a developer gets from "this looks interesting" to "I grok it
+    (deeply understand it) and I'm using it effectively."
+  </p>
+
+  <h2>Experience</h2>
+
+  <h3>
+    Developer Relations / Technical Content Creator — DonWeb Cloud &amp; IaaS
+  </h3>
+  <p class="meta">DonWeb Cloud · Argentina/remote · 2024–2025</p>
+  <ul>
+    <li>
+      Created the developer-facing content program for DonWeb's Cloud &amp;
+      IaaS products, reporting to the division's Marketing Manager and Product
+      Owner (VP of Product): tutorials, guides, video, and demos covering VPS,
+      Linux, Docker, CI/CD with GitHub Actions, DNS/SSL, CMS platforms, and app
+      deployment.
+    </li>
+    <li>
+      Designed and delivered live programming and DevOps workshops (2x/month,
+      300+ sign-ups, 150+ live attendance).
+    </li>
+    <li>
+      Sustained a video cadence of <strong
+        >3 short-form videos per week plus one in-depth long-form video per
+        month</strong
+      > across social channels (in collaboration with a video editor/brand
+      designer).
+    </li>
+    <li>
+      Built and tested every environment, command, and config shipped in
+      content — and reviewed production VPS images, scripts, and configuration
+      examples for correctness and reproducibility.
+    </li>
+    <li>
+      Translated complex infrastructure workflows into onboarding paths for
+      developers new to cloud tooling.
+    </li>
+    <li>
+      Produced content and demos for product launches in other divisions
+      (EnvialoSimple, Mi Cuenta) and internal training for L1 support staff.
+    </li>
+  </ul>
+
+  <h3>
+    Freelance Technical Content, Translation &amp; Review — Fiverr / Upwork /
+    Direct
+  </h3>
+  <p class="meta">
+    Self-employed · 2017–present · Top Seller status, 2,500+ completed
+    projects, 96% repeat clients
+  </p>
+  <ul>
+    <li>
+      Produced and reviewed developer-facing content for international clients:
+      API documentation, tutorials, training guides, white papers, and
+      localization for US, UK, EU, and Australian tech companies.
+    </li>
+    <li>
+      Built a Top Seller reputation on quality and reliability at high volume —
+      1,500+ positive reviews.
+    </li>
+    <li>
+      English↔Spanish technical translation at native level across software,
+      cybersecurity, networking, and developer education.
+    </li>
+  </ul>
+
+  <h3>Content Creator — matiasbaldanza @ Twitch</h3>
+  <p class="meta">Twitch/YouTube · 2022–present</p>
+  <ul>
+    <li>
+      Streamed daily learn-in-public sessions on front-end development (React,
+      Next.js) from 2022–2024, averaging <strong>100 concurrent viewers</strong
+      > with peaks of 180–200 — comfortable on camera, live-coding, unscripted
+      Q&amp;A.
+    </li>
+    <li>
+      Currently active on X and GitHub, building and sharing developer tooling
+      experiments: AI coding agents (Claude Code, MCP servers), self-hosted
+      infra, RAG/evals workflows.
+    </li>
+  </ul>
+
+  <h3>Earlier career — IT Specialist / Sysadmin / Instructor</h3>
+  <p class="meta">Various employers · 1998–2017</p>
+  <ul>
+    <li>
+      13 years in networking, support, incident response, and systems
+      administration (Generación WiFi S.A. and others), head of support for a
+      local ISP and technical services company, outsourced to banks and
+      enterprises for deployments and incident response. Wrote the
+      documentation, checklists, and FAQs, trained technical staff.
+    </li>
+    <li>
+      Instructor and Academic Coordinator at a training facility: designed and
+      taught technical courses for corporate clients and an MCSE/MCP training
+      center.
+    </li>
+  </ul>
+
+  <h2>Skills</h2>
+  <ul class="skills">
+    {
+      skills.map((group) => (
+        <li>
+          <strong>{group.title}:</strong> {group.items}
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>Education</h2>
+  <p>
+    <strong>Universidad Nacional de la Patagonia San Juan Bosco</strong>,
+    Argentina<br />
+    <em>
+      Analista Programador Universitario — Associate Degree–level program in
+      Systems Analysis and Programming
+    </em>
+  </p>
+
+  <p slot="footer">
+    <a href="/dotcms">← Back to the pitch</a> ·
+    <a href="/cv/matias-baldanza-cv-dotcms.pdf">Download PDF resumé</a>
+  </p>
+</BaseLayout>
+
+<style>
+  .top {
+    padding-top: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .tagline {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    margin-top: 0.4rem;
+  }
+
+  .skills {
+    list-style: none;
+    padding-left: 0;
+  }
+</style>
