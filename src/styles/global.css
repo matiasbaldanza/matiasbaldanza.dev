@@ -98,7 +98,7 @@ h3 {
   font-style: italic;
   line-height: 1.5;
   color: var(--color-ink);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
 }
 
 /* Highlighter emphasis — links own the underline, so <u> gets a subtle
