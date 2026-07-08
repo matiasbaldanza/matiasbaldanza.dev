@@ -73,23 +73,53 @@ type Workshop = {
 
 const workshopHistory: Workshop[] = [
   {
-    title: "DEMO — Docker desde cero",
-    date: "2024-08",
+    title: "Acelera tu Next.js con Cloudflare: CDN, caché e ISR",
+    date: "2025-10-24",
     description:
-      "Two-hour live session: images, containers, volumes, and compose, ending with a deployed app. 300+ sign-ups.",
-  },
-  {
-    title: "DEMO — CI/CD con GitHub Actions",
-    date: "2024-10",
-    description:
-      "Pipelines from scratch: build, test, and deploy to a VPS on every push, with rollback strategies.",
-  },
-  {
-    title: "DEMO — Deploy de apps con Nginx y SSL",
-    date: "2025-02",
-    description:
-      "Reverse proxies, Let's Encrypt certificates, and zero-downtime reloads, live and unscripted.",
+      "45-minute live session: configuring Cloudflare to cache and accelerate a Next.js app — CDN, cache rules, and ISR in action.",
     isNew: true,
+  },
+  {
+    title: "Protege tu aplicación web con Cloudflare: DDoS, WAF y seguridad",
+    date: "2025-10-09",
+    description:
+      "Hands-on intro to protecting a production web app: DDoS mitigation, WAF rules, and security hardening in 45 minutes.",
+  },
+  {
+    title: "Construye un Page Builder con React y Puck",
+    date: "2025-09-25",
+    description:
+      "Live-coding a visual page builder with React and Puck, connecting editor components to real content.",
+  },
+  {
+    title: "Storybook en acción: para equipos de frontend y diseño",
+    date: "2025-09-11",
+    description:
+      "First steps with Storybook as the shared workbench between frontend and design teams.",
+  },
+  {
+    title: "EasyPanel de cero a despliegue",
+    date: "2025-08-14",
+    description:
+      "The EasyPanel happy path: from a clean VPS to a deployed application.",
+  },
+  {
+    title: "n8n: patrones avanzados y buenas prácticas",
+    date: "2025-07-17",
+    description:
+      "Second-level n8n: advanced workflow patterns and production practices.",
+  },
+  {
+    title: "Flujos de n8n para DevOps",
+    date: "2025-07-10",
+    description:
+      "Automating repetitive deploy and server tasks with n8n workflows.",
+  },
+  {
+    title: "Directus avanzado: roles y flujos personalizados",
+    date: "2025-06-19",
+    description:
+      "Custom role structures, granular permissions, and automated flows in Directus.",
   },
 ];
 
@@ -270,7 +300,22 @@ const sections = [
     workshopHistoryAll.length > 0 && (
       <>
         <h2 id="workshop-history">Workshop history</h2>
-        <p class="meta">Click any row for the session spec.</p>
+        <p class="meta">
+          I researched, drafted, and delivered on average two live workshops per
+          month for DonWeb Cloud from 2024 to 2025, including introductory and
+          advanced sessions, and product features. The sessions were delivered
+          in Spanish and most of them were edited and published on YouTube. A
+          complete list of my workshop sessions is available at{" "}
+          <a
+            href="https://talleres.donweb.com/ponentes/matias-baldanza/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            talleres.donweb.com/ponentes/matias-baldanza/
+          </a>
+          .
+        </p>
+        <p class="meta">Click any row for a summary of the session spec.</p>
         <div class="workshop-list">
           {workshopHistoryAll.map((w) => (
             <WorkshopItem
