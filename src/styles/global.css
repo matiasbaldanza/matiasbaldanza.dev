@@ -244,6 +244,56 @@ footer.site .inner {
   padding-top: var(--space-2);
 }
 
+footer.site .footer-nav {
+  margin-bottom: 0.35rem;
+}
+
+footer.site .footer-copy {
+  margin-bottom: 0;
+}
+
+footer.site .footer-nav span {
+  margin-inline: 0.35em;
+}
+
+/* --- Homepage sections --------------------------------------------------- */
+
+.home-section h2 {
+  margin-top: var(--space-4);
+}
+
+.home-section .section-more {
+  margin-top: var(--space-2);
+  margin-bottom: 0;
+}
+
+.empty-state {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--color-muted);
+}
+
+.link-list {
+  list-style: none;
+  padding-left: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+}
+
+.link-list li {
+  margin-bottom: 0.65rem;
+}
+
+.link-list .item-meta {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.back-link {
+  margin-top: var(--space-4);
+}
+
 @media (max-width: 600px) {
   body {
     font-size: 1.0625rem;

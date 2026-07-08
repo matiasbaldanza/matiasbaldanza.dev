@@ -1,7 +1,16 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import SocialLinks from "../components/SocialLinks.astro";
-import EmailLink from "../components/EmailLink.astro";
+import BaseLayout from "../layouts/BaseLayout.astro"
+import SocialLinks from "../components/SocialLinks.astro"
+import EmailLink from "../components/EmailLink.astro"
+import { videoLinks } from "../data/video-links"
+
+const nowUpdated = "July 2026"
+
+const videoTypeLabels: Record<(typeof videoLinks)[number]["type"], string> = {
+  short: "Short",
+  long: "Long-form",
+  stream: "Stream",
+}
 ---
 
 <BaseLayout
@@ -33,11 +42,64 @@ import EmailLink from "../components/EmailLink.astro";
     <SocialLinks />
     <p class="meta contact">
       Argentina-based (remote, US-hours compatible) {" · "}
-      <EmailLink label="Email me" />
+      <EmailLink label="Email me" /> {" · "}
+      <a href="/work">Work with me</a>
     </p>
   </section>
 
-  {/* Articles and published content cards will grow here over time. */}
+  <section class="home-section" aria-labelledby="now-heading">
+    <h2 id="now-heading">Now</h2>
+    <p>
+      Building out this site, streaming the process on Twitch, and taking on
+      freelance content and consulting work. Updated {nowUpdated}.
+    </p>
+    <p class="meta section-more">
+      <a href="/now">Full now page →</a>
+    </p>
+  </section>
+
+  <section class="home-section" aria-labelledby="writing-heading">
+    <h2 id="writing-heading">Latest writing</h2>
+    <p class="empty-state">Articles coming soon — tutorials, demos, and DevRel notes in English and Spanish.</p>
+    <p class="meta section-more">
+      <span class="muted">/writing</span> — Phase 1
+    </p>
+  </section>
+
+  <section class="home-section" aria-labelledby="video-heading">
+    <h2 id="video-heading">Video</h2>
+    {
+      videoLinks.length > 0 ? (
+        <ul class="link-list">
+          {videoLinks.map((item) => (
+            <li>
+              <a href={item.href}>{item.title}</a>
+              <span class="item-meta">
+                {" "}
+                · {videoTypeLabels[item.type]} · {item.platform}
+              </span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="empty-state">
+          Short and long-form videos on YouTube and Twitch — links will appear
+          here as I publish.
+        </p>
+      )
+    }
+  </section>
+
+  <section class="home-section" aria-labelledby="work-heading">
+    <h2 id="work-heading">Work with me</h2>
+    <p>
+      Freelance technical writing, demo builds, workshops, and per-issue
+      consulting for developer-tool companies — in English or Spanish.
+    </p>
+    <p class="meta section-more">
+      <a href="/work">Details &amp; how to reach me →</a>
+    </p>
+  </section>
 
   {
     /* Reveals the way-back banner for visitors who entered through an
