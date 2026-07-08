@@ -1,0 +1,171 @@
+---
+import DotcmsLayout from "../../layouts/DotcmsLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import EmailLink from "../../components/dotcms/EmailLink.astro";
+
+const sections = [
+  { id: "first-thirty", label: "First 30 minutes" },
+  { id: "agents", label: "Agent-ready docs" },
+  { id: "runnable", label: "Runnable examples" },
+  { id: "uve", label: "UVE story" },
+  { id: "workshops", label: "Workshops" },
+  { id: "signals", label: "Signals" },
+  { id: "spanish", label: "Spanish" },
+  { id: "questions", label: "Questions" },
+];
+---
+
+<DotcmsLayout
+  title="Ideas to discuss — Matías Baldanza"
+  description="Content strategy conversation starters for dotCMS Developer Relations."
+>
+  <header class="top">
+    <h1>Ideas I'd like to discuss</h1>
+    <p class="meta">Conversation starters, not prescriptions</p>
+  </header>
+
+  <p class="subtitle">
+    A few directions that look promising from the outside — some may already
+    exist, some may be wrong for reasons I can't see yet. Before proposing any
+    of them seriously, I'd want to understand your strategy: the <a
+      href="#questions">questions at the end</a
+    > are where I'd start.
+  </p>
+
+  <PageToc sections={sections} sticky />
+
+  <h2 id="first-thirty">The first 30 minutes of a dotCMS developer</h2>
+  <p>
+    The metric I care about most: how fast a developer goes from <em
+      >“this looks interesting”</em
+    > to content rendering from a real repository in their own stack. dotCMS already
+    has strong raw material: the API playgrounds, the framework guides, UVE. I’d start
+    by walking that funnel end to end as a skeptical evaluator, instrumenting where
+    people stall, and shaving the path: one canonical quickstart per framework, each
+    ending in a working page, each honestly timed.
+  </p>
+
+  <h2 id="agents">Documentation that AI agents can work with</h2>
+  <p>
+    A growing share of developers now meet a platform through Claude, Cursor, or
+    Copilot rather than through Google. That changes what documentation needs to
+    be: structured, example-dense, and consumable by coding agents: llms.txt, an
+    MCP server exposing docs and content APIs, examples that agents can lift
+    wholesale. “The CMS your AI assistant actually knows how to use” is a wedge
+    no enterprise competitor firmly owns yet.
+  </p>
+
+  <h2 id="runnable">Every claim ships with something runnable</h2>
+  <p>
+    My rule at DonWeb was that nothing ships in content (no command, no config,
+    no environment) that I hadn’t built and run myself. Applied here: every
+    integration guide backed by a maintained example repo per SDK (Next.js,
+    Astro, Angular, .NET…), CI-tested against current releases, so the docs
+    can’t silently rot. Developers forgive missing features; they don’t forgive
+    copy-pasted examples that fail.
+  </p>
+
+  <h2 id="uve">Making UVE the demo centerpiece</h2>
+  <p>
+    The Universal Visual Editor is the differentiator against pure-headless
+    competitors: marketers edit visually while developers keep their stack. That
+    story is best <em>shown</em> — short split-screen videos where a content editor
+    and a developer work on the same page without stepping on each other, one per
+    framework. It’s also the demo that lands with both technical and non-technical
+    buyers in the same room.
+  </p>
+
+  <h2 id="workshops">A live workshop cadence</h2>
+  <p>
+    At DonWeb I ran live programming and DevOps workshops twice a month and they
+    compounded: recordings became evergreen content, questions became the
+    content backlog, attendees became community. The same motion fits dotCMS at
+    two stages: evaluation (“build a site on dotCMS in 45 minutes”) and customer
+    onboarding (deeper, feature-specific sessions). <em
+      >These are also excellent for community building and brand awareness.</em
+    >
+  </p>
+
+  <h2 id="signals">Content from signals, not keyword lists</h2>
+  <p>
+    Some of the most useful developer content doesn’t come from a keyword tool
+    or a roadmap item. It comes from support tickets, recurring community
+    questions, sales-call objections, and what the engineering team keeps
+    explaining. I’d want a lightweight pipeline that turns those signals into a
+    prioritized backlog, and measures content by developer outcomes (activation,
+    time-to-first-success, deflected tickets) rather than page views alone.
+  </p>
+
+  <h2 id="spanish">Spanish as a growth surface</h2>
+  <p>
+    LATAM and Spain have large, underserved developer communities, and very few
+    enterprise CMS vendors speak to them natively. I produce technical content
+    at native level in both languages. The marginal cost of a Spanish track
+    (docs-adjacent tutorials, workshops, short-form) is low, and the space is
+    much less crowded than the English one.
+  </p>
+
+  <hr />
+
+  <h2 id="questions">A few questions of my own</h2>
+  <p>
+    Ideas are cheap without context — these are the things I'd want to
+    understand first.
+  </p>
+  <ol>
+    <li>
+      What does a successful first session with dotCMS look like from the
+      product team's perspective — and how close does reality get today?
+    </li>
+    <li>
+      Where do evaluating developers actually stall? Is it a docs problem, a
+      demo problem, or an architecture-mental-model problem?
+    </li>
+    <li>
+      How do docs, developer relations, and product marketing currently divide
+      the developer-facing surface — and where do things fall between chairs?
+    </li>
+    <li>
+      When your customers' developers bring AI assistants into their integration
+      work, what are they asking dotCMS for that doesn't exist yet?
+    </li>
+    <li>
+      Which piece of existing dotCMS content are you proudest of — and which one
+      quietly embarrasses you?
+    </li>
+  </ol>
+  <p class="muted">
+    <em>
+      <u>
+        I have more questions, specifically about your current strategy and the
+        direction you intend to take for the Developer Relations Engineer role
+      </u>, but I think they are better asked in an interview than published on
+      the open internet next to your competitors' reading list.
+    </em>
+  </p>
+
+  <hr />
+
+  <p>
+    If any of these overlap with what you're already doing — even better; I'd
+    love to hear how it's going. <EmailLink label="Tell me where I'm wrong" />.
+  </p>
+
+  <p slot="footer">
+    <a href="/dotcms">← Back to the intro</a>{" · "}
+    <a href="/dotcms/samples">samples</a>{" · "}
+    <a href="/dotcms/resume">resumé</a>{" · "}
+    <EmailLink />
+  </p>
+</DotcmsLayout>
+
+<style>
+  .top {
+    padding-top: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .top .meta {
+    margin-top: 0.4rem;
+  }
+</style>
