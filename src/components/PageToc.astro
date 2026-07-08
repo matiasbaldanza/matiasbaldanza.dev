@@ -1,0 +1,169 @@
+---
+// "On this page" anchor row. Pages pass the sections that actually render
+// (filtering is the page's job — only it knows what "empty" means).
+// The shape matches Astro's MDX `headings` (slug/text) closely enough that
+// future articles can feed it with a two-line map.
+// `sticky` pins the bar near the top while scrolling; the shadow-when-stuck
+// uses CSS scroll-state queries (no JS) and degrades to shadowless sticky in
+// browsers without support.
+// Roadmap: sticky sidebar variant for wide screens (docs/roadmap.md).
+interface Props {
+  sections: { id: string; label: string }[];
+  label?: string;
+  sticky?: boolean;
+}
+
+const { sections, label = "On this page:", sticky = false } = Astro.props;
+
+// Mobile layout heuristic, decided at build time (CSS can't ask "would this
+// wrap?"): under ~44 chars the dot-joined row fits a ~390px phone on one
+// line, so keep the inline centered layout; longer rows switch to the
+// two-column grid where dots only ever sit between columns.
+const joinedLength = sections.map((s) => s.label).join(" · ").length;
+const gridOnMobile = joinedLength > 44;
+---
+
+{
+  sections.length > 1 && (
+    <div class:list={["toc-wrap", { sticky }]}>
+      <nav class:list={["toc", { grid: gridOnMobile }]} aria-label="On this page">
+        <span class="toc-label">{label}</span>
+        {sections.map((s, i) => (
+          <span class="item">
+            <a href={`#${s.id}`}>{s.label}</a>
+            {i < sections.length - 1 && <span aria-hidden="true">·</span>}
+          </span>
+        ))}
+      </nav>
+    </div>
+  )
+}
+
+<style>
+  .toc-wrap {
+    margin-bottom: var(--space-3);
+  }
+
+  .toc-wrap.sticky {
+    position: sticky;
+    top: 0.5rem;
+    z-index: 10;
+    container-type: scroll-state;
+    /* Exclude from scroll anchoring — sticky elements picked as the
+       browser's scroll anchor drift off their top offset mid-scroll. */
+    overflow-anchor: none;
+  }
+
+  .toc {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    background: #fff;
+    border: 1px solid var(--color-rule);
+    border-radius: 2px;
+    padding: 0.55rem 0.75rem;
+    text-align: center;
+    /* When links wrap, balance the lines instead of orphaning the last item */
+    text-wrap: balance;
+    transition: box-shadow 0.3s ease;
+  }
+
+  /* Sticky elevation, two layers:
+     1. Frosted-glass blur (all modern browsers incl. Safari) — invisible at
+        rest, appears as soon as content scrolls underneath. Solid #fff stays
+        as fallback where backdrop-filter is unsupported.
+     2. Shadow while actually stuck (scroll-state queries; Chrome/Edge) —
+        browsers without support just never add it. */
+  /* Frosted glass + fade zone, as ONE backdrop-filter: a single pseudo
+     covers the top-margin gap and the bar area together. Two stacked
+     backdrop-filters (bar + pseudo) made scroll repaints lag behind the
+     composited scroll — the bar visibly drifted during fast scrolling. */
+  @supports (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+  ) {
+    .toc-wrap.sticky .toc {
+      background: color-mix(in srgb, #fff 72%, transparent);
+    }
+
+    .toc-wrap.sticky::before {
+      content: "";
+      position: absolute;
+      inset: -0.65rem 0 0 0;
+      z-index: -1;
+      pointer-events: none;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      background: linear-gradient(
+        to bottom,
+        var(--color-bg),
+        color-mix(in srgb, var(--color-bg) 55%, transparent)
+      );
+    }
+  }
+
+  @container scroll-state(stuck: top) {
+    .toc {
+      box-shadow: 0 2px 10px rgba(31, 28, 26, 0.12);
+    }
+  }
+
+  .toc-label {
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    margin-right: 1.1em;
+  }
+
+  .toc a {
+    color: var(--color-muted);
+    text-decoration-color: var(--color-rule);
+  }
+
+  .toc a:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+
+  /* Each link + trailing dot is one atomic unit: lines can break between
+     items (atomic inlines create break opportunities) but never inside one,
+     so no line ever starts with "·". */
+  .item {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .toc span[aria-hidden] {
+    margin-inline: 0.45em;
+  }
+
+  /* Mobile: drop the visual label (the nav's aria-label keeps the
+     semantics) and lay items out as a centered two-column grid. Rows are
+     deterministic, so the separator dot only ever sits between the two
+     columns — never trailing at a line end. With the hidden label as child
+     1, column-1 items are even children, column-2 items odd. */
+  @media (max-width: 600px) {
+    .toc-label {
+      display: none;
+    }
+
+    .toc.grid {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: center;
+      row-gap: 0.35rem;
+    }
+
+    .toc.grid .item:nth-child(even) {
+      justify-self: end;
+    }
+
+    .toc.grid .item:nth-child(odd) {
+      justify-self: start;
+    }
+
+    /* Column-2 items would trail their row with a dot — hide it. */
+    .toc.grid .item:nth-child(odd) span[aria-hidden] {
+      display: none;
+    }
+  }
+</style>

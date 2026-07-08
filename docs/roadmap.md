@@ -39,6 +39,24 @@ Options, by effort:
 
 **Recommended combo:** option 1 now + option 3 while a pitch is live.
 
+## PageToc: sidebar and minimap variants
+
+`src/components/PageToc.astro` (Phase 1, done) renders an inline "On this
+page" anchor row; pages pass `sections: { id, label }[]` and keep the
+filtering logic themselves. The prop shape matches Astro MDX `headings`
+(slug/text), so articles can feed it with a two-line map.
+
+- **Phase 2 — sticky sidebar (when articles exist):** add `variant="sidebar"`
+  rendering the list vertically with `position: sticky` in the margin right of
+  the 65ch column, only above ~1100px viewport; below that, fall back to the
+  inline bar. Pure CSS, keeps the zero-JS guarantee.
+- **Phase 3 — true minimap (probably never):** appear-on-scroll + highlight of
+  the current section. Requires either the site's first first-party JS
+  (~15-line IntersectionObserver scroll-spy — needs an ADR 0001 amendment) or
+  CSS scroll-driven animations (verify Safari support at build time). Floating
+  overlays also cost scarce space on mobile, where the inline bar already
+  wins. Only revisit if Phase 2 proves insufficient on long articles.
+
 ## Migrate off Vercel
 
 Target: **Cloudflare Pages** — static Astro from the same GitHub repo, free

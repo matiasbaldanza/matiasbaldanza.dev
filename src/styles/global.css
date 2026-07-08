@@ -37,9 +37,10 @@ html {
   }
 }
 
+/* Clears the sticky PageToc (~41px bar + 8px gap) with breathing room. */
 h2[id],
 h3[id] {
-  scroll-margin-top: var(--space-3);
+  scroll-margin-top: 5rem;
 }
 
 body {

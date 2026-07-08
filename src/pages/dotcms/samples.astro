@@ -2,6 +2,7 @@
 import DotcmsLayout from "../../layouts/DotcmsLayout.astro";
 import VideoEmbed from "../../components/dotcms/VideoEmbed.astro";
 import WorkshopItem from "../../components/dotcms/WorkshopItem.astro";
+import PageToc from "../../components/PageToc.astro";
 
 // ---------------------------------------------------------------------------
 // Content lives here. Paste regular share URLs (YouTube watch/shorts,
@@ -180,9 +181,17 @@ const workshopHistoryAll = [
 // "On this page" anchor row — only sections that actually render.
 const sections = [
   { id: "long-form", label: "Long-form", count: longFormAll.length },
-  { id: "live-workshops", label: "Live workshops", count: workshopVideosAll.length },
+  {
+    id: "live-workshops",
+    label: "Live workshops",
+    count: workshopVideosAll.length,
+  },
   { id: "short-form", label: "Short-form", count: shortFormAll.length },
-  { id: "workshop-history", label: "Workshop history", count: workshopHistoryAll.length },
+  {
+    id: "workshop-history",
+    label: "Workshop history",
+    count: workshopHistoryAll.length,
+  },
 ].filter((s) => s.count > 0);
 ---
 
@@ -203,19 +212,7 @@ const sections = [
     🚧 Check back soon and, sorry for the inconvenience! 🚧
   </p>
 
-  {
-    sections.length > 1 && (
-      <nav class="toc" aria-label="On this page">
-        <span class="toc-label">On this page:</span>
-        {sections.map((s, i) => (
-          <>
-            <a href={`#${s.id}`}>{s.label}</a>
-            {i < sections.length - 1 && <span aria-hidden="true"> · </span>}
-          </>
-        ))}
-      </nav>
-    )
-  }
+  <PageToc sections={sections} sticky />
 
   {
     longFormAll.length > 0 && (
@@ -302,39 +299,6 @@ const sections = [
 
   .top .meta {
     margin-top: 0.4rem;
-  }
-
-  .toc {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    color: var(--color-muted);
-    margin-bottom: var(--space-3);
-    background: #fff;
-    border: 1px solid var(--color-rule);
-    border-radius: 2px;
-    padding: 0.55rem 0.75rem;
-    text-align: center;
-  }
-
-  .toc-label {
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    margin-right: 0.4em;
-  }
-
-  .toc a {
-    color: var(--color-muted);
-    text-decoration-color: var(--color-rule);
-  }
-
-  .toc a:hover {
-    color: var(--color-accent);
-    text-decoration-color: var(--color-accent);
-  }
-
-  .toc span {
-    margin-inline: 0.3em;
   }
 
   .vertical-grid {
