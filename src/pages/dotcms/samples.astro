@@ -36,6 +36,23 @@ const longForm: Video[] = [
     url: "https://www.youtube.com/watch?v=Mf7itkDjE80",
     title: "Desplegar una API de Node.js en un VPS",
   },
+  // Under review — keep or cut:
+  {
+    url: "https://www.youtube.com/watch?v=9OeTvnsKz3w",
+    title: "Learn Docker Desktop in 5 minutes",
+  },
+  {
+    url: "https://www.youtube.com/watch?v=re-LnLz-9Ug",
+    title: "Instalar PostgreSQL con Docker",
+  },
+  {
+    url: "https://www.youtube.com/watch?v=CrvIbxow-Q0",
+    title: "Configurar NGINX con SSL en tu VPS",
+  },
+  {
+    url: "https://www.youtube.com/watch?v=OUvKwAdH5qo",
+    title: "Instalar Docker Engine en Ubuntu",
+  },
 ];
 
 // Live workshop recordings (horizontal, 16:9)
@@ -50,17 +67,28 @@ const workshopVideos: Video[] = [
 // Short-form vertical video (TikTok / Instagram / YouTube Shorts, 9:16)
 const shortForm: Video[] = [
   {
-    url: "https://www.youtube.com/shorts/kRuTMWSyMLA",
-    title: "DEMO — vertical 1",
-    note: "DEMO vertical note",
+    url: "https://www.youtube.com/shorts/0Cfla_dqAr0",
+    title: "Tipos de volúmenes en Docker",
   },
   {
-    url: "https://www.youtube.com/shorts/kRuTMWSyMLA",
-    title: "DEMO — vertical 2",
+    url: "https://www.youtube.com/shorts/mjK39zahhE8",
+    title: "Me pasó este error con Docker",
   },
   {
-    url: "https://www.youtube.com/shorts/kRuTMWSyMLA",
-    title: "DEMO — vertical 3",
+    url: "https://www.youtube.com/shorts/eHSrjmTfdbA",
+    title: "Aprende a utilizar Scoop para Windows en menos de 3 minutos",
+  },
+  {
+    url: "https://www.youtube.com/shorts/hQvXXblWXS8",
+    title: "¿Sabías que puedes hacer esto al desplegar tus aplicaciones web?",
+  },
+  {
+    url: "https://www.youtube.com/shorts/wmJb_gdBK2g",
+    title: "Params en bash",
+  },
+  {
+    url: "https://www.youtube.com/shorts/mny9-COSiL4",
+    title: "Trucazo de CSS: stacking context",
   },
 ];
 
@@ -238,11 +266,11 @@ const sections = [
     </p>
   </header>
 
-  <p class="subtitle">
+  <!-- <p class="subtitle">
     Uh, oh! I’m currently curating samples and will be uploading them in a few
     hours. Below I'll be adding a growing selection, not the finished gallery.
     🚧 Check back soon and, sorry for the inconvenience! 🚧
-  </p>
+  </p> -->
 
   <PageToc sections={sections} sticky />
 
@@ -250,6 +278,10 @@ const sections = [
     longFormAll.length > 0 && (
       <>
         <h2 id="long-form">Long-form video &amp; tutorials</h2>
+        <p class="meta">
+          I created and published long-form and tutorial videos on a variety of
+          topics. Editing and thumbnails were produced by an in-house editor.
+        </p>
         {longFormAll.map((v) => (
           <VideoEmbed
             url={v.url}
@@ -282,6 +314,11 @@ const sections = [
     shortFormAll.length > 0 && (
       <>
         <h2 id="short-form">Short-form video</h2>
+        <p class="meta">
+          Vertical short-form videos on a variety of topics. A few were
+          extracted from longer horizontal videos, and others were created
+          specifically for engagement and gauging audience interest on topics.
+        </p>
         <div class="vertical-grid">
           {shortFormAll.map((v) => (
             <VideoEmbed
@@ -301,21 +338,28 @@ const sections = [
     workshopHistoryAll.length > 0 && (
       <>
         <h2 id="workshop-history">Workshop history</h2>
-        <p class="meta">
-          I researched, drafted, and delivered on average two live workshops per
-          month for DonWeb Cloud from 2024 to 2025, including introductory and
-          advanced sessions, and product features. The sessions were delivered
-          in Spanish and most of them were edited and published on YouTube. A
-          complete list of my workshop sessions is available at{" "}
-          <a
-            href="https://talleres.donweb.com/ponentes/matias-baldanza/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            talleres.donweb.com/ponentes/matias-baldanza/
-          </a>
-          .
-        </p>
+        <>
+          <p class="meta">
+            I researched, drafted, and delivered on average two live workshops
+            per month for DonWeb Cloud from 2024 to 2025, including introductory
+            and advanced sessions, and product features. The sessions were
+            delivered in Spanish and most of them were edited and published on
+            YouTube.{" "}
+          </p>
+          <p class="meta">
+            {" "}
+            Below are the most recent workshop sessions. A complete list of my
+            workshop sessions is available at{" "}
+            <a
+              href="https://talleres.donweb.com/ponentes/matias-baldanza/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              talleres.donweb.com/ponentes/matias-baldanza/
+            </a>
+            .
+          </p>
+        </>
         <p class="meta">Click any row for a summary of the session spec.</p>
         <div class="workshop-list">
           {workshopHistoryAll.map((w) => (
