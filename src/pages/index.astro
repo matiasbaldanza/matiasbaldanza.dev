@@ -8,9 +8,8 @@ import EmailLink from "../components/EmailLink.astro";
   title="Matías Baldanza — Developer Relations & Technical Content"
   description="Hands-on DevRel engineer: working demos, docs and tutorials, workshops, and video — in English and Spanish."
 >
-  <aside id="pitch-banner" class="pitch-banner" hidden>
-    Hey 👋. I believe you came here through <a href="/dotcms">my pitch</a>.<br
-    />
+  <aside id="way-back-banner" class="way-back-banner" hidden>
+    Hey 👋. I believe you came here through <a href="/dotcms">my pitch</a>.
     Since that's an unlisted page, here's your way back.
   </aside>
 
@@ -49,7 +48,7 @@ import EmailLink from "../components/EmailLink.astro";
       const raw = sessionStorage.getItem("unlisted-entry");
       if (raw) {
         const { label, href } = JSON.parse(raw);
-        const banner = document.getElementById("pitch-banner");
+        const banner = document.getElementById("way-back-banner");
         const link = banner.querySelector("a");
         link.href = href;
         link.textContent = label;
@@ -60,7 +59,7 @@ import EmailLink from "../components/EmailLink.astro";
 </BaseLayout>
 
 <style>
-  .pitch-banner {
+  .way-back-banner {
     font-family: var(--font-sans);
     font-size: 0.85rem;
     color: var(--color-muted);
@@ -70,9 +69,10 @@ import EmailLink from "../components/EmailLink.astro";
     padding: 0.55rem 0.75rem;
     text-align: center;
     margin-bottom: var(--space-3);
+    text-wrap: balance;
   }
 
-  .pitch-banner a {
+  .way-back-banner a {
     color: var(--color-accent);
   }
 
