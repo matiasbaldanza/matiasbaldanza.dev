@@ -176,6 +176,49 @@ em {
   color: var(--color-muted);
 }
 
+/* Inline term with a styled tooltip (text in data-tip). Dotted underline
+   hints there's more; distinct from links (solid) and highlights (wash).
+   The tooltip itself reuses the sticky-note language from video annotations:
+   accent wash, slight tilt, soft shadow. Shown on hover and keyboard focus. */
+.tip {
+  position: relative;
+  border-bottom: 1px dotted var(--color-muted);
+  cursor: help;
+}
+
+.tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.6rem);
+  transform: translateX(-50%) rotate(-1deg);
+  width: max-content;
+  max-width: min(38ch, 78vw);
+  background: color-mix(in srgb, var(--color-accent) 12%, var(--color-bg));
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+  padding: 0.45em 0.7em;
+  border: 1px solid var(--color-rule);
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(31, 28, 26, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.tip:hover::after,
+.tip:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+
 .meta {
   font-family: var(--font-sans);
   font-size: 1rem;

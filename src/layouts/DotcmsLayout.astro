@@ -17,6 +17,11 @@ interface Props {
 
 const { title, description } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+// Marks this browser tab as having entered through the unlisted pitch, so
+// the main site can offer a way back (see the banner in pages/index.astro).
+// Session-scoped: dies with the tab, nothing is tracked or persisted.
+const pitch = { label: "my dotCMS pitch", href: "/dotcms" };
 ---
 
 <BaseLayout title={title} description={description} noindex>
@@ -38,6 +43,11 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
   </nav>
   <slot />
   <slot name="footer" slot="footer" />
+  <script is:inline define:vars={{ pitch }}>
+    try {
+      sessionStorage.setItem("unlisted-entry", JSON.stringify(pitch));
+    } catch {}
+  </script>
 </BaseLayout>
 
 <style>

@@ -8,6 +8,12 @@ import EmailLink from "../components/EmailLink.astro";
   title="Matías Baldanza — Developer Relations & Technical Content"
   description="Hands-on DevRel engineer: working demos, docs and tutorials, workshops, and video — in English and Spanish."
 >
+  <aside id="pitch-banner" class="pitch-banner" hidden>
+    Hey 👋. I believe you came here through <a href="/dotcms">my pitch</a>.<br
+    />
+    Since that's an unlisted page, here's your way back.
+  </aside>
+
   <section class="hero">
     <img
       class="avatar"
@@ -32,9 +38,44 @@ import EmailLink from "../components/EmailLink.astro";
   </section>
 
   {/* Articles and published content cards will grow here over time. */}
+
+  {
+    /* Reveals the way-back banner for visitors who entered through an
+      unlisted pitch page (marker set in DotcmsLayout). No marker, no JS,
+      or storage blocked → the banner simply stays hidden. */
+  }
+  <script is:inline>
+    try {
+      const raw = sessionStorage.getItem("unlisted-entry");
+      if (raw) {
+        const { label, href } = JSON.parse(raw);
+        const banner = document.getElementById("pitch-banner");
+        const link = banner.querySelector("a");
+        link.href = href;
+        link.textContent = label;
+        banner.hidden = false;
+      }
+    } catch {}
+  </script>
 </BaseLayout>
 
 <style>
+  .pitch-banner {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    background: #fff;
+    border: 1px solid var(--color-rule);
+    border-radius: 2px;
+    padding: 0.55rem 0.75rem;
+    text-align: center;
+    margin-bottom: var(--space-3);
+  }
+
+  .pitch-banner a {
+    color: var(--color-accent);
+  }
+
   .hero {
     padding-top: var(--space-3);
   }
