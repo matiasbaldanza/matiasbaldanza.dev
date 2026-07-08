@@ -1,5 +1,6 @@
 ---
 import DotcmsLayout from "../../layouts/DotcmsLayout.astro";
+import EmailLink from "../../components/dotcms/EmailLink.astro";
 ---
 
 <DotcmsLayout
@@ -149,9 +150,7 @@ import DotcmsLayout from "../../layouts/DotcmsLayout.astro";
 
   <p slot="footer">
     Matías Baldanza{" · "}
-    <a href="mailto:matiasbaldanza@gmail.com">matiasbaldanza@gmail.com</a>{
-      " · "
-    }
+    <EmailLink />{" · "}
     <a href="/dotcms/resume">resumé</a>{" · "}
     <a href="https://github.com/matiasbaldanza">GitHub</a>{" · "}
     <a href="https://linkedin.com/in/matiasbaldanza">LinkedIn</a>

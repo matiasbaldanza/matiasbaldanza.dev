@@ -1,0 +1,19 @@
+---
+// Site-wide email link. Shows the address by default (no harm in exposing
+// it); pass `label` for different link text and `subject` to pre-fill the
+// email subject — pitch mini-sites wrap this with their own subject (see
+// src/components/dotcms/EmailLink.astro).
+interface Props {
+  label?: string;
+  subject?: string;
+}
+
+const address = "matiasbaldanza@gmail.com";
+const { label = address, subject } = Astro.props;
+
+const href = subject
+  ? `mailto:${address}?subject=${encodeURIComponent(subject)}`
+  : `mailto:${address}`;
+---
+
+<a href={href}>{label}</a>

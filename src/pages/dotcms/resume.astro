@@ -1,6 +1,7 @@
 ---
 import DotcmsLayout from "../../layouts/DotcmsLayout.astro";
 import PageToc from "../../components/PageToc.astro";
+import EmailLink from "../../components/dotcms/EmailLink.astro";
 
 const sections = [
   { id: "about-me", label: "About me" },
@@ -53,10 +54,7 @@ const skills = [
       Argentina (remote, US-hours compatible)
     </p>
     <p class="meta">
-      <a
-        href="mailto:matiasbaldanza@gmail.com?subject=CV%20DevRel%20Engineer%20dotCMS%202026%20from%20site"
-        >Email</a
-      >{" · "}
+      <EmailLink />{" · "}
       <a href="https://linkedin.com/in/matiasbaldanza">LinkedIn</a>{" · "}
       <a href="https://github.com/matiasbaldanza">GitHub</a>{" · "}
       <a href="https://x.com/matiasbaldanza">X/Twitter</a>{" · "}

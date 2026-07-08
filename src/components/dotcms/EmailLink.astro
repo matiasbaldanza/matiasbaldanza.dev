@@ -1,0 +1,18 @@
+---
+// Email link for the dotCMS pitch: same address as everywhere, but every
+// link on this mini-site carries the pitch-specific subject so replies are
+// recognizable in the inbox. Other job pitches define their own wrapper
+// with their own subject line.
+import EmailLink from "../EmailLink.astro";
+
+interface Props {
+  label?: string;
+}
+
+const { label = "Email" } = Astro.props;
+---
+
+<EmailLink
+  label={label}
+  subject="DevRel Engineer @ dotCMS 2026 (from matiasbaldanza.dev)"
+/>
