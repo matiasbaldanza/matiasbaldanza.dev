@@ -3,6 +3,31 @@
 Post-v1 items, roughly ordered. Each entry captures enough context to pick the
 work up cold; promote to an ADR when a decision is actually made.
 
+## Homepage growth (phased)
+
+Catch-all public homepage at `/` — linktree-with-content that grows into a
+bilingual blog/newsletter. Unlisted pitch mini-sites (e.g. `/dotcms`) stay
+separate; future pitches reuse the same pattern.
+
+| Phase | Goal | Key deliverables |
+|-------|------|------------------|
+| **0** | Usable structure | Homepage sections, `/now`, `/work` (freelance), footer nav, empty states |
+| **1** | Articles live | `@astrojs/mdx`, `src/content/posts/`, `/writing`, RSS, 3 launch posts |
+| **2** | Spanish track | `/es`, `translationOf` pairs, hreflang, `/es/feed.xml` |
+| **3** | Newsletter | Separate subscribe paths per language (and later per `topic`) |
+| **4** | More work streams | Sponsors, `/projects`, `/video` as products go live |
+| **5** | Followers area | Gated drafts/BTS for Patreon/Twitch supporters — design on stream |
+
+**Launch articles (English first):** building this site (Astro + Claude), the
+way-back banner (ADR 0004), Orca build first impressions. Video highlights on
+homepage via `src/data/video-links.ts`.
+
+**WIP drafts before Phase 1:** `docs/drafts/` (plain `.md`, not built). See
+[docs/drafts/README.md](./drafts/README.md).
+
+**Work-with-me priority:** freelance content & consulting on `/work` first;
+sponsor and project sections deferred to Phase 4.
+
 ## Visitor analytics & notifications
 
 **Want:** know when someone visits (especially `/dotcms` while a job
@@ -66,8 +91,22 @@ Steps when ready: create Pages project from the repo (build: `npm run build`,
 output `dist/`), point the domain at Pages instead of Vercel, delete the
 Vercel project.
 
+## Followers area (Phase 5)
+
+Gated section for Patreon/Twitch/YouTube supporters: behind-the-scenes and
+working drafts. Build in public on stream; decide auth via ADR when started.
+
+Options to evaluate (simplest first):
+
+1. **Patreon OAuth + edge gate** — Cloudflare Worker checks token; `followers`
+   content collection or `followers: true` frontmatter flag on posts.
+2. **Magic link** — simpler UX, weaker platform tie-in.
+3. **Platform-native** — Patreon posts for BTS, site links out (easiest, splits
+   audience).
+
+Route: `/followers` (not linked from public nav until ready).
+
 ## Earlier deferrals (from plan.md)
 
 - Case study page under `/dotcms` (Zimdars-style project deep-dive)
-- Articles/content cards on the homepage (`@astrojs/mdx` + content collection)
 - OG image generation
