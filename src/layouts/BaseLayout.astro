@@ -35,14 +35,10 @@ const canonical = new URL(Astro.url.pathname, "https://matiasbaldanza.dev");
     <footer class="site">
       <div class="inner meta">
         <slot name="footer">
-          <nav class="footer-nav" aria-label="Site">
-            <a href="/now">Now</a>
-            <span aria-hidden="true"> · </span>
-            <a href="/work">Work with me</a>
-          </nav>
           <p class="footer-copy">© {new Date().getFullYear()} Matías Baldanza</p>
         </slot>
       </div>
     </footer>
+    <slot name="after" />
   </body>
 </html>

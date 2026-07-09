@@ -1,0 +1,248 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+// Main-site nav, mirroring DotcmsLayout's pattern. To add a page: create it
+// under src/pages/ and add an entry here. `soon: true` renders a disabled
+// placeholder for pages that don't exist yet (no link, no 404).
+// Home is not in this list — the brand chip (top left) is the way home.
+const navItems: { label: string; href: string; soon?: boolean }[] = [
+  { label: "Now", href: "/now" },
+  { label: "Work", href: "/work" },
+  { label: "Writing", href: "/writing", soon: true },
+];
+
+// Language indicator. Becomes a toggle link once a counterpart page exists
+// (set `alt` to { code, href } in Phase 2 / i18n).
+const lang = { code: "EN" };
+// `as` keeps the union type — `const alt = null` alone narrows to `null` and
+// makes the truthy branch `never` in the template.
+const alt = null as { code: string; href: string } | null;
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isHome = currentPath === "/";
+---
+
+<BaseLayout title={title} description={description}>
+  <header class="site-top">
+    {
+      isHome ? (
+        <span class="brand current" aria-current="page">
+          Matías Baldanza
+        </span>
+      ) : (
+        <a class="brand" href="/">
+          Matías Baldanza
+        </a>
+      )
+    }
+    <nav class="top-nav" aria-label="Site">
+      {
+        navItems.map((item) => {
+          if (item.soon) {
+            return (
+              <span class="nav-soon" aria-disabled="true">
+                {item.label}
+                <sup>soon</sup>
+              </span>
+            );
+          }
+          const isCurrent = currentPath === item.href;
+          return (
+            <a
+              href={item.href}
+              class:list={{ current: isCurrent }}
+              aria-current={isCurrent ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+      {
+        alt ? (
+          <a class="nav-lang" href={alt.href} lang={alt.code.toLowerCase()}>
+            {lang.code}
+          </a>
+        ) : (
+          <span class="nav-lang" aria-current="true">
+            {lang.code}
+          </span>
+        )
+      }
+    </nav>
+  </header>
+
+  <slot />
+  <slot name="footer" slot="footer" />
+
+  <nav class="bottom-nav" aria-label="Site" slot="after">
+    {
+      navItems.map((item) => {
+        if (item.soon) {
+          return (
+            <span class="nav-soon" aria-disabled="true">
+              {item.label}
+              <sup>soon</sup>
+            </span>
+          );
+        }
+        const isCurrent = currentPath === item.href;
+        return (
+          <a
+            href={item.href}
+            class:list={{ current: isCurrent }}
+            aria-current={isCurrent ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        );
+      })
+    }
+    {
+      alt ? (
+        <a class="nav-lang" href={alt.href} lang={alt.code.toLowerCase()}>
+          {lang.code}
+        </a>
+      ) : (
+        <span class="nav-lang" aria-current="true">
+          {lang.code}
+        </span>
+      )
+    }
+  </nav>
+</BaseLayout>
+
+<style>
+  /* --- Shared type treatment (same voice as the dotcms mini-nav) --------- */
+
+  .site-top,
+  .bottom-nav {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .site-top a,
+  .bottom-nav a {
+    color: var(--color-muted);
+    text-decoration: none;
+    padding: 0.2em 0.55em;
+  }
+
+  .site-top a:hover,
+  .bottom-nav a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .site-top a.current,
+  .bottom-nav a.current,
+  .brand.current {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    text-decoration: none;
+    border-radius: 2px;
+  }
+
+  .nav-soon {
+    color: color-mix(in srgb, var(--color-muted) 55%, var(--color-bg));
+    padding: 0.2em 0.55em;
+    cursor: default;
+  }
+
+  .nav-soon sup {
+    font-size: 0.6em;
+    letter-spacing: 0.04em;
+    margin-left: 0.15em;
+  }
+
+  /* De-emphasized language indicator */
+  .nav-lang {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: color-mix(in srgb, var(--color-muted) 70%, var(--color-bg));
+    padding: 0.2em 0.4em;
+    align-self: center;
+  }
+
+  a.nav-lang:hover {
+    color: var(--color-accent);
+  }
+
+  /* --- Desktop: brand left, dotcms-style nav top right ------------------- */
+
+  .site-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .brand {
+    padding: 0.2em 0.55em;
+    white-space: nowrap;
+  }
+
+  .brand.current {
+    cursor: default;
+  }
+
+  .top-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: 0.4rem 0.5rem;
+  }
+
+  /* --- Mobile: same chips, centered, sticky at the viewport bottom ------- */
+
+  .bottom-nav {
+    display: none;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.5rem;
+    padding: 0.55rem var(--space-3);
+    border-top: 1px solid var(--color-rule);
+    background: #fff;
+  }
+
+  @supports (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+  ) {
+    .bottom-nav {
+      background: color-mix(in srgb, #fff 72%, transparent);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .top-nav {
+      display: none;
+    }
+
+    .site-top {
+      justify-content: center;
+    }
+
+    .bottom-nav {
+      display: flex;
+    }
+  }
+</style>

@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro"
+import MainLayout from "../layouts/MainLayout.astro"
 import SocialLinks from "../components/SocialLinks.astro"
 import EmailLink from "../components/EmailLink.astro"
 import { videoLinks } from "../data/video-links"
@@ -13,7 +13,7 @@ const videoTypeLabels: Record<(typeof videoLinks)[number]["type"], string> = {
 }
 ---
 
-<BaseLayout
+<MainLayout
   title="Matías Baldanza — Developer Relations & Technical Content"
   description="Hands-on DevRel engineer: working demos, docs and tutorials, workshops, and video — in English and Spanish."
 >
@@ -119,7 +119,7 @@ const videoTypeLabels: Record<(typeof videoLinks)[number]["type"], string> = {
       }
     } catch {}
   </script>
-</BaseLayout>
+</MainLayout>
 
 <style>
   .way-back-banner {

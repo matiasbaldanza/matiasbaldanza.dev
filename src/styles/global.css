@@ -51,12 +51,18 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Column layout so short pages still push footer + bottom nav to the base. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
   max-width: var(--measure);
+  width: 100%;
   margin-inline: auto;
   padding: var(--space-5) var(--space-3) var(--space-4);
+  flex: 1 0 auto;
 }
 
 h1,
@@ -244,16 +250,8 @@ footer.site .inner {
   padding-top: var(--space-2);
 }
 
-footer.site .footer-nav {
-  margin-bottom: 0.35rem;
-}
-
 footer.site .footer-copy {
   margin-bottom: 0;
-}
-
-footer.site .footer-nav span {
-  margin-inline: 0.35em;
 }
 
 /* --- Homepage sections --------------------------------------------------- */
@@ -288,10 +286,6 @@ footer.site .footer-nav span {
 .link-list .item-meta {
   color: var(--color-muted);
   font-size: 0.9rem;
-}
-
-.back-link {
-  margin-top: var(--space-4);
 }
 
 @media (max-width: 600px) {
