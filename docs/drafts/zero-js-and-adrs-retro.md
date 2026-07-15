@@ -30,19 +30,19 @@ This is a nice middle ground I'd use again: no auth to build, no separate deploy
 
 ## Decision 3: the first JavaScript is ten lines (ADR 0004)
 
-Here's the fun one. Zero client-side JS was a founding constraint. Then a real UX problem showed up: someone enters through an unlisted pitch, wanders to the homepage, and can't find their way back — because the homepage deliberately doesn't link to unlisted pages. `document.referrer` doesn't survive address-bar edits. Only client-side state can remember how this tab arrived.
+Here's the fun one. Zero client-side JS was a founding constraint. Then a real UX problem showed up: someone enters through an unlisted pitch, wanders to the homepage, and can't find their way back because the homepage deliberately doesn't link to unlisted pages. `document.referrer` doesn't survive address-bar edits. Only client-side state can remember how this tab arrived. 
 
 So the site's first JavaScript is an easter egg: pitch layouts write one `sessionStorage` key, and the homepage reads it to unhide a prerendered "way back" banner. The exception stays honest through three constraints: **session-scoped** (dies with the tab, no cookies, nothing sent anywhere), **progressive** (no JS or blocked storage → banner stays hidden, nothing else depends on script), and **inline** (`is:inline`, ~10 lines, no bundle).
 
-The lesson isn't "rules are made to be broken." It's that a written rule (ADR 0001) forced the exception to justify itself in writing too. That argument — is this feature worth the first JS on the site? — is exactly the argument you *should* have, and without the ADR it never happens.
+The lesson isn't "rules are made to be broken." It's that a written rule (ADR 0001) forced the exception to justify itself in writing too. The argument of *is this feature worth the first JS on the site?* is exactly the argument you *should* have, and without the ADR it never happens.
 
 ## Decision 4: docs as memory, for agents and for me
 
 The repo carries a `docs/` folder with a brief, a launch plan, a roadmap, and the ADRs — written before and during the build, not after. Solo project, so who are they for?
 
-Two readers: **AI agents** and **future me**. It turns out briefing an agent well and briefing your future self are the same problem: capture the why, not just the what. Working with Claude on this repo, the docs were the difference between "generate me a component" and a pair that pushes back citing constraints we agreed on. The roadmap even specifies how drafts (like this one) graduate: plain `.md` in `docs/drafts/` now, MDX content collection in Phase 1, Spanish translations with `translationOf` in Phase 2.
+Two readers: **AI agents** and **future me**. It turns out briefing an agent well and briefing your future self are the same problem: capture the why, not just the what. Working with Claude on this repo, the docs were the difference between *"generate me a component"* and a peer (the agent or future me) pushing back citing constraints we agreed on. The roadmap even specifies how drafts (like this one) graduate: plain `.md` in `docs/drafts/` now, MDX content collection in Phase 1, Spanish translations with `translationOf` in Phase 2.
 
-Which is the real retro conclusion: the site is becoming my own tiny homemade CMS, growing one phase at a time, in public. Fewer features than any CMS you'd install — but I can read all of it, and it can't surprise me.
+Which is the real retro conclusion: the site is becoming my own tiny homemade CMS, growing one phase at a time, in public. Fewer features than any CMS you'd install but I can read all of it, and it can't surprise me.
 
 ## Scorecard
 
