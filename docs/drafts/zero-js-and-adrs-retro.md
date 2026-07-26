@@ -34,7 +34,37 @@ Here's the fun one. Zero client-side JS was a founding constraint. Then a real U
 
 So the site's first JavaScript is an easter egg: pitch layouts write one `sessionStorage` key, and the homepage reads it to unhide a prerendered "way back" banner. The exception stays honest through three constraints: **session-scoped** (dies with the tab, no cookies, nothing sent anywhere), **progressive** (no JS or blocked storage → banner stays hidden, nothing else depends on script), and **inline** (`is:inline`, ~10 lines, no bundle).
 
-The lesson isn't "rules are made to be broken." It's that a written rule (ADR 0001) forced the exception to justify itself in writing too. The argument of *is this feature worth the first JS on the site?* is exactly the argument you *should* have, and without the ADR it never happens.
+Pitch layout writes the marker:
+
+```js
+// DotcmsLayout.astro — is:inline
+try {
+  sessionStorage.setItem("unlisted-entry", JSON.stringify(pitch));
+} catch {}
+```
+
+Homepage reads it and unhides the banner:
+
+```js
+// index.astro — is:inline
+try {
+  const raw = sessionStorage.getItem("unlisted-entry");
+  if (raw) {
+    const { label, href } = JSON.parse(raw);
+    const banner = document.getElementById("way-back-banner");
+    const link = banner.querySelector("a");
+    link.href = href;
+    link.textContent = label;
+    banner.hidden = false;
+  }
+} catch {}
+```
+
+Here's what the initial version of the *way back banner* looks like:
+
+![The "way back" banner](./zero-js-and-adrs-retro-1-way-back-banner.png)
+
+> The lesson isn't "rules are made to be broken." It's that a written rule (ADR 0001) forced the exception to justify itself in writing too. The argument of *is this feature worth the first JS on the site?* is exactly the argument you *should* have, and without the ADR it never happens.
 
 ## Decision 4: docs as memory, for agents and for me
 
