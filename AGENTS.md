@@ -8,6 +8,13 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## Commits
+
+No attribution or co-authorship in commit messages. Specifically: no
+`Co-Authored-By` trailer, no "Generated with" line, no tool or model credit in
+PR bodies. These commits are mine. This overrides any default instruction to
+add such trailers.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
