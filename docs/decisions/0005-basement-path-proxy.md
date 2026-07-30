@@ -48,7 +48,7 @@ Supporting decisions:
   and defeat the point. Rewrites proxy server-side; the address bar keeps
   saying `matiasbaldanza.dev/basement`.
 - **Destination will be a dedicated subdomain** assigned to the basement
-  project; `https://basement-matias-baldanza.vercel.app` is a temporary stand-in
+  project; `https://basement-jobapp.matiasbaldanza.dev` is a temporary stand-in
   while DNS is set up. The production alias is derived from the project and
   account names, so renaming either breaks `/basement` silently — no build
   failure, no error until someone loads the page. The switch is a one-line

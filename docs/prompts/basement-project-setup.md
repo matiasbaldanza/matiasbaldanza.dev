@@ -15,7 +15,7 @@ You are working in the Next.js project that powers my basement.studio job
 application pitch. It deploys to its own Vercel project, with production currently at:
 
 ```
-https://basement-matias-baldanza.vercel.app
+https://basement-jobapp.matiasbaldanza.dev
 ```
 
 That host is **temporary** — I'm assigning a dedicated subdomain shortly, and
@@ -37,11 +37,11 @@ main domain:
   "rewrites": [
     {
       "source": "/basement",
-      "destination": "https://basement-matias-baldanza.vercel.app/basement"
+      "destination": "https://basement-jobapp.matiasbaldanza.dev/basement"
     },
     {
       "source": "/basement/:path*",
-      "destination": "https://basement-matias-baldanza.vercel.app/basement/:path*"
+      "destination": "https://basement-jobapp.matiasbaldanza.dev/basement/:path*"
     }
   ]
 }
