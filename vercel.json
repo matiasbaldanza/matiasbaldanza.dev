@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/basement",
+      "destination": "https://basement-matias-baldanza.vercel.app/basement"
+    },
+    {
+      "source": "/basement/:path*",
+      "destination": "https://basement-matias-baldanza.vercel.app/basement/:path*"
+    }
+  ]
+}

@@ -23,8 +23,10 @@ npm run build    # static build to dist/
   shell and meta tags.
 - `src/styles/global.css` — the entire design system: custom properties, type
   scale, one accent color.
-- `docs/` — [project brief](docs/brief.md), [launch plan](docs/plan.md), and
-  [architecture decision records](docs/decisions/). Written before and during
-  the build, updated alongside the code, for agents and future reference.
+- `docs/` — [project brief](docs/brief.md), [launch plan](docs/plan.md),
+  [architecture decision records](docs/decisions/), and
+  [reference notes](docs/reference/) on techniques used here that generalize
+  beyond it. Written before and during the build, updated alongside the code,
+  for agents and future reference.
 
 Currently deployed on [Vercel](https://vercel.com).
