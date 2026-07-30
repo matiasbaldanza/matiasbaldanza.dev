@@ -44,7 +44,7 @@ the rewrite is wrong or protection is on.
 
 ## Phase 1 — Basement app, standalone
 
-On `https://basement-matias-baldanza.vercel.app`:
+On `https://basement-jobapp.matiasbaldanza.dev`:
 
 - [ ] `/basement` loads and renders fully — styles, fonts, images.
 - [ ] **Network tab: nothing is requested from the root.** Filter for `_next`

@@ -3,11 +3,11 @@
   "rewrites": [
     {
       "source": "/basement",
-      "destination": "https://basement-matias-baldanza.vercel.app/basement"
+      "destination": "https://basement-jobapp.matiasbaldanza.dev/basement"
     },
     {
       "source": "/basement/:path*",
-      "destination": "https://basement-matias-baldanza.vercel.app/basement/:path*"
+      "destination": "https://basement-jobapp.matiasbaldanza.dev/basement/:path*"
     }
   ]
 }
